@@ -1,0 +1,62 @@
+
+/* CSS input search navbar */
+.ant-input{
+    border:none!important;
+}
+/* .ant-input-search > .ant-input-group > .ant-input-group-addon:last-child .ant-input-search-button{
+    color: red!important;
+    border-color: transparent!important;
+    background-color: white!important;
+    box-shadow: none!important;
+
+} */
+/* .ant-input:focus{
+    box-shadow: none;
+} */
+.ant-btn-primary:hover{
+    background: none!important;
+}
+.ant-select:not(.ant-select-disabled):hover .ant-select-selector{
+    border-color: transparent!important;
+    border-right-width: none!important;
+}
+a{
+    color: black!important;
+    font-weight: 400!important;
+    font-size: 16px;
+
+}
+/* Css slick (home detail component) */
+.slick-dots{
+    display: none!important;
+}
+.slick-dots li button:before{
+    font-size: 16px!important;
+}
+.slick-dots li.slick-active button:before{
+    color: orange!important;
+}
+/* HomeDetail Responsive */
+ @media (min-width: 1020px){
+    .homeDetail{
+        bottom: "20px";
+        left: "110px"
+    }
+}
+#components-layout-demo-custom-trigger .trigger {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 24px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  #components-layout-demo-custom-trigger .trigger:hover {
+    color: #1890ff;
+  }
+  
+  #components-layout-demo-custom-trigger .logo {
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 20px;
+  }
