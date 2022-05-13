@@ -56,8 +56,8 @@ export default function UserComment({ id }) {
       });
     }
   };
-
-  const handleUpdate = () => {
+  const handleUpdate = (e) => {
+    e.preventDefault();
     const id = editDanhGia._id;
     const data = comment;
     console.log(data);
@@ -142,10 +142,7 @@ export default function UserComment({ id }) {
   return (
     <div>
       <div className="flex mx-auto items-center justify-center shadow-lg mt-10 ">
-        <form
-          onSubmit={handleSubmit}
-          className="w-full max-w-xl bg-white rounded-lg px-4 pt-2"
-        >
+        <form className="w-full max-w-xl bg-white rounded-lg px-4 pt-2">
           <div className="flex flex-wrap -mx-3 mb-6">
             <h2 className="px-4 pt-3 pb-2 text-gray-800 text-lg">
               Add a new comment
@@ -180,18 +177,22 @@ export default function UserComment({ id }) {
               </div>
               <div className="-mr-1">
                 {disabled ? (
-                  <input
+                  <button
                     disabled
-                    type="submit"
+                    onClick={handleSubmit}
                     className="bg-gray-400 invisible text-white p-2 rounded-md cursor-not-allowed"
                     defaultValue="Post Comment"
-                  />
+                  >
+                    submit
+                  </button>
                 ) : (
-                  <input
-                    type="submit"
+                  <button
+                    onClick={handleSubmit}
                     className="bg-blue-400 text-white p-2 rounded-md cursor-pointer"
                     defaultValue="Post Comment"
-                  />
+                  >
+                    submit
+                  </button>
                 )}
               </div>
             </div>

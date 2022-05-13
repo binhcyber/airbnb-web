@@ -6,13 +6,18 @@ import * as Yup from "yup";
 import { NavLink } from "react-router-dom";
 import { dangKyAction } from "../../redux/action/dangKyAction";
 import { DatePicker, Space } from "antd";
+import moment from "moment";
 
 export default function Register() {
   const dispatch = useDispatch();
   const SignupSchema = Yup.object().shape({
     name: Yup.string().required("Required"),
     address: Yup.string().required("Required"),
-    birthday: Yup.string().required("Required"),
+    birthday: Yup.string()
+      .required("birthday is Required")
+      .test("DOB", "Birthday không hợp lệ", (value) => {
+        return moment().diff(moment(value), "years") >= 10;
+      }),
     password: Yup.string()
       .min(6, "Too Short!")
       .max(50, "Too Long!")
