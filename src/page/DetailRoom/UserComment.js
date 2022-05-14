@@ -1,4 +1,4 @@
-import React, { createElement, useEffect, useState } from "react";
+import React, { createElement, useEffect, useState, useRef } from "react";
 import { Comment, Tooltip, Avatar } from "antd";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,6 +17,7 @@ export default function UserComment({ id }) {
   useEffect(() => {
     dispatch(layDanhGiaAction(id));
   }, []);
+  let textInput = useRef();
   const { danhGia, editDanhGia, disabled } = useSelector((state) => {
     return state.DanhGiaReducer;
   });
@@ -55,6 +56,7 @@ export default function UserComment({ id }) {
         content: "",
       });
     }
+    textInput.current.focus();
   };
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -68,7 +70,11 @@ export default function UserComment({ id }) {
       });
     } else {
       dispatch(capNhatDanhGiaAction(id, data));
+      setComment({
+        content: "",
+      });
     }
+    textInput.current.focus();
   };
   console.log(comment.error);
   const newDangNhap = dangNhap?.name;
@@ -90,7 +96,7 @@ export default function UserComment({ id }) {
   };
   const renderComment = () => {
     return (
-      <>
+      <div>
         {newDanhGia &&
           newDanhGia.length > 0 &&
           newDanhGia
@@ -136,7 +142,7 @@ export default function UserComment({ id }) {
           onChange={handlePagination}
           total={newDanhGia.length} //total number of card data available
         />
-      </>
+      </div>
     );
   };
   return (
@@ -154,6 +160,7 @@ export default function UserComment({ id }) {
                 name="body"
                 placeholder="Type Your Comment"
                 value={comment.content}
+                ref={textInput}
               />
               <p className="text-red-500">{comment.error}</p>
             </div>
