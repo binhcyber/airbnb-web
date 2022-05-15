@@ -5,7 +5,6 @@ export const layChiTietPhongAction = (id) => {
     httpServ
       .layChiTietPhong(id)
       .then((res) => {
-        console.log(res);
         dispatch({
           type: SET_DETAIL_ROOM,
           payload: res.data,

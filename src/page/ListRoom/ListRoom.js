@@ -50,7 +50,7 @@ export default function ListRoom() {
   };
   const handleThangMay = () => {
     setThangMay(!thangMay);
-    console.log(thangMay);
+
     dispatch({
       type: SET_THANG_MAY,
       payload: thangMay,
@@ -58,7 +58,7 @@ export default function ListRoom() {
   };
   const handleHotTub = () => {
     setHotTub(!hotTub);
-    console.log(hotTub);
+
     dispatch({
       type: SET_HOT_TUB,
       payload: hotTub,
@@ -67,7 +67,7 @@ export default function ListRoom() {
 
   const handlePool = () => {
     setPool(!pool);
-    console.log(pool);
+
     dispatch({
       type: SET_POOL,
       payload: pool,
@@ -76,7 +76,7 @@ export default function ListRoom() {
 
   const handleFirePlace = () => {
     setFirePlace(!firePlace);
-    console.log(firePlace);
+
     dispatch({
       type: SET_INDOOR_FIRE_PLACE,
       payload: firePlace,
@@ -85,7 +85,7 @@ export default function ListRoom() {
 
   const handleDryer = () => {
     setDryer(!dryer);
-    console.log(dryer);
+
     dispatch({
       type: SET_DRYER,
       payload: dryer,
@@ -94,7 +94,7 @@ export default function ListRoom() {
 
   const handleGym = () => {
     setGym(!gym);
-    console.log(gym);
+
     dispatch({
       type: SET_GYM,
       payload: gym,
@@ -102,7 +102,7 @@ export default function ListRoom() {
   };
   const handleKitchen = () => {
     setKitchen(!kitchen);
-    console.log(kitchen);
+
     dispatch({
       type: SET_KITCHEN,
       payload: kitchen,

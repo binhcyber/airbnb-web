@@ -5,7 +5,6 @@ export const datPhongAction = (data) => {
     httpServ
       .datPhong(data)
       .then((res) => {
-        console.log(res);
         message.success("Đặt Phòng thành công");
       })
       .catch((err) => {

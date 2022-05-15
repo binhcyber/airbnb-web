@@ -12,16 +12,13 @@ export const themNguoiDungAction = (data) => {
     httpServ
       .themNguoiDung(data)
       .then((res) => {
-        console.log(res.data);
         dispatch({
           type: THEM_NGUOI_DUNG,
           payload: res.data,
         });
         message.success("THÊM NGƯỜI DÙNG THÀNH CÔNG");
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   };
 };
 export const xoaNguoiDungAction = (id) => {
@@ -29,16 +26,13 @@ export const xoaNguoiDungAction = (id) => {
     httpServ
       .xoaNguoiDung(id)
       .then((res) => {
-        console.log(res.data);
         dispatch({
           type: XOA_NGUOI_DUNG,
           payload: res.data,
         });
         message.success("XÓA NGƯỜI DÙNG THÀNH CÔNG");
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   };
 };
 export const capNhatNguoiDungAction = (id, data) => {
@@ -46,7 +40,6 @@ export const capNhatNguoiDungAction = (id, data) => {
     httpServ
       .capNhatNguoiDung(id, data)
       .then((res) => {
-        console.log(res.data);
         if (res.status === 200) {
           dispatch({
             type: CAP_NHAT_NGUOI_DUNG,
@@ -68,7 +61,6 @@ export const capNhatNguoiDungAvatarAction = (FormData) => {
     httpServ
       .capNhatAvatar(FormData)
       .then((res) => {
-        console.log(res.data);
         if (res.status === 200) {
           dispatch({
             type: CAP_NHAT_NGUOI_DUNG_AVATAR,

@@ -23,7 +23,6 @@ export default function ModalThemUser() {
     form.resetFields();
   };
   const onFinish = (values) => {
-    console.log("Success:", values);
     const dayBirthday = moment(values.date).format("YYYY-MM-DD");
     const data = {
       ...values,
@@ -31,7 +30,6 @@ export default function ModalThemUser() {
       gender: true,
       dayBirthday,
     };
-    console.log(data);
     dispatch(themNguoiDungAction(data));
   };
   return (

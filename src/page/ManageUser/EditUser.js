@@ -9,11 +9,11 @@ export default function EditUser() {
   const { editUser } = useSelector((state) => {
     return state.dsNguoiDungPhanTrangReducer;
   });
-  console.log(editUser);
+
   const [form] = Form.useForm();
   useEffect(() => {
     let newUser = { ...editUser };
-    console.log(newUser);
+
     form.setFieldsValue(newUser);
   }, []);
   const dispatch = useDispatch();
@@ -25,7 +25,6 @@ export default function EditUser() {
     setIsModalVisible(false);
   };
   const onFinish = (values) => {
-    console.log("Success:", values);
     const id = values._id;
     // const dayBirthday = moment(values.date).format("YYYY-MM-DD");
     const data = {
@@ -34,7 +33,7 @@ export default function EditUser() {
       gender: true,
       // dayBirthday,
     };
-    console.log(data);
+
     dispatch(capNhatNguoiDungAction(id, data));
   };
 

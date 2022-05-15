@@ -13,7 +13,6 @@ export const layDSPhongAction = () => {
     httpServ
       .layDanhSachPhong()
       .then((res) => {
-        console.log(res.data);
         dispatch({
           type: SET_LIST_ROOM,
           payload: res.data,
@@ -30,7 +29,6 @@ export const taoPhongAction = (data) => {
     httpServ
       .taoPhong(data)
       .then((res) => {
-        console.log(res.data);
         if (res.status === 200) {
           dispatch({
             type: CREATE_ROOM,
@@ -52,7 +50,6 @@ export const xoaPhongAction = (id) => {
     httpServ
       .xoaPhong(id)
       .then((res) => {
-        console.log(res.data);
         if (res.status === 200) {
           dispatch({
             type: DELETE_ROOM,
@@ -73,7 +70,6 @@ export const capNhatPhongAction = (id, data) => {
     httpServ
       .capNhatPhong(id, data)
       .then((res) => {
-        console.log(res.data);
         if (res.status === 200) {
           dispatch({
             type: UPADTE_ROOM,
@@ -95,7 +91,6 @@ export const capNhatHinhAnhPhongAction = (id, data) => {
     httpServ
       .capNhatHinhAnhPhong(id, data)
       .then((res) => {
-        console.log(res);
         if (res.status === 200) {
           dispatch({
             type: UPADTE_IMAGE_ROOM,

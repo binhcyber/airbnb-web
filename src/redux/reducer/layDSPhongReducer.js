@@ -28,14 +28,12 @@ export const layDSPhongReducer = (state = initialState, action) => {
       return { ...state };
     }
     case CREATE_ROOM: {
-      console.log(action.payload);
       let newDsPhong = [...state.dsPhong];
       newDsPhong.push(action.payload);
       state.dsPhong = newDsPhong;
       return { ...state };
     }
     case DELETE_ROOM: {
-      console.log(action.payload);
       let newDsPhong = [...state.dsPhong];
       let index = newDsPhong.findIndex((item) => {
         return item._id === action.payload._id;
@@ -65,7 +63,7 @@ export const layDSPhongReducer = (state = initialState, action) => {
     }
     case UPADTE_IMAGE_ROOM: {
       let roomImgUpdate = action.payload;
-      console.log(roomImgUpdate);
+
       let newDsPhong = [...state.dsPhong];
       let index = newDsPhong.findIndex((item) => {
         return item._id === roomImgUpdate._id;
@@ -78,26 +76,24 @@ export const layDSPhongReducer = (state = initialState, action) => {
     }
     case SEARCH_ROOM: {
       let searchResult = action.payload;
-      console.log(searchResult);
+
       let cloneDsPhong = [...state.dsPhong];
-      console.log(cloneDsPhong);
+
       let newDsPhong = cloneDsPhong.filter((item) => {
-        console.log(item.name);
         return (
           item.name?.trim().toUpperCase() === searchResult.trim().toUpperCase()
         );
       });
-      console.log(newDsPhong);
+
       state.dsPhong = newDsPhong;
       return { ...state };
     }
     case SET_WIFI: {
-      console.log(action.payload);
       let dsPhongUpdate = [...state.dsPhong];
-      console.log(dsPhongUpdate);
+
       if (!action.payload) {
         state.dsPhongUtilities = dsPhongUpdate;
-        console.log(state.dsPhong);
+
         return { ...state };
       } else {
         let newDsPhong = dsPhongUpdate.filter(
@@ -108,12 +104,11 @@ export const layDSPhongReducer = (state = initialState, action) => {
       }
     }
     case SET_THANG_MAY: {
-      console.log(action.payload);
       let dsPhongUpdate = [...state.dsPhong];
-      console.log(dsPhongUpdate);
+
       if (!action.payload) {
         state.dsPhongUtilities = dsPhongUpdate;
-        console.log(state.dsPhong);
+
         return { ...state };
       } else {
         let newDsPhong = dsPhongUpdate.filter(
@@ -124,12 +119,11 @@ export const layDSPhongReducer = (state = initialState, action) => {
       }
     }
     case SET_GYM: {
-      console.log(action.payload);
       let dsPhongUpdate = [...state.dsPhong];
-      console.log(dsPhongUpdate);
+
       if (!action.payload) {
         state.dsPhongUtilities = dsPhongUpdate;
-        console.log(state.dsPhong);
+
         return { ...state };
       } else {
         let newDsPhong = dsPhongUpdate.filter(
@@ -140,12 +134,11 @@ export const layDSPhongReducer = (state = initialState, action) => {
       }
     }
     case SET_DRYER: {
-      console.log(action.payload);
       let dsPhongUpdate = [...state.dsPhong];
-      console.log(dsPhongUpdate);
+
       if (!action.payload) {
         state.dsPhongUtilities = dsPhongUpdate;
-        console.log(state.dsPhong);
+
         return { ...state };
       } else {
         let newDsPhong = dsPhongUpdate.filter(
@@ -156,12 +149,11 @@ export const layDSPhongReducer = (state = initialState, action) => {
       }
     }
     case SET_HOT_TUB: {
-      console.log(action.payload);
       let dsPhongUpdate = [...state.dsPhong];
-      console.log(dsPhongUpdate);
+
       if (!action.payload) {
         state.dsPhongUtilities = dsPhongUpdate;
-        console.log(state.dsPhong);
+
         return { ...state };
       } else {
         let newDsPhong = dsPhongUpdate.filter(
@@ -172,12 +164,11 @@ export const layDSPhongReducer = (state = initialState, action) => {
       }
     }
     case SET_KITCHEN: {
-      console.log(action.payload);
       let dsPhongUpdate = [...state.dsPhong];
-      console.log(dsPhongUpdate);
+
       if (!action.payload) {
         state.dsPhongUtilities = dsPhongUpdate;
-        console.log(state.dsPhong);
+
         return { ...state };
       } else {
         let newDsPhong = dsPhongUpdate.filter(
@@ -188,12 +179,11 @@ export const layDSPhongReducer = (state = initialState, action) => {
       }
     }
     case SET_POOL: {
-      console.log(action.payload);
       let dsPhongUpdate = [...state.dsPhong];
-      console.log(dsPhongUpdate);
+
       if (!action.payload) {
         state.dsPhongUtilities = dsPhongUpdate;
-        console.log(state.dsPhong);
+
         return { ...state };
       } else {
         let newDsPhong = dsPhongUpdate.filter(
@@ -204,12 +194,11 @@ export const layDSPhongReducer = (state = initialState, action) => {
       }
     }
     case SET_INDOOR_FIRE_PLACE: {
-      console.log(action.payload);
       let dsPhongUpdate = [...state.dsPhong];
-      console.log(dsPhongUpdate);
+
       if (!action.payload) {
         state.dsPhongUtilities = dsPhongUpdate;
-        console.log(state.dsPhong);
+
         return { ...state };
       } else {
         let newDsPhong = dsPhongUpdate.filter(

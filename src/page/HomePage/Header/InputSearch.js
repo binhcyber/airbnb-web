@@ -37,11 +37,7 @@ export default function InputSearch({ dsViTri }) {
   const handleSearch = (value) => {
     setLists(value ? searchResult(value) : []);
   };
-  const onSelect = (value) => {
-    console.log(value);
-    // setLists(value ? searchResult(value) : []);
-    // value !== "" ? searchResult(value) : [];
-  };
+  const onSelect = (value) => {};
   return (
     <AutoComplete
       dropdownMatchSelectWidth={252}

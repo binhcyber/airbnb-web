@@ -17,7 +17,6 @@ export const localStorageReducer = (state = initialState, action) => {
       return { ...state };
     }
     case DANG_NHAP_TYPE: {
-      console.log(action.payload);
       state.dangNhap = action.payload;
       localStorageServ.userInfor.set(action.payload);
       return { ...state };

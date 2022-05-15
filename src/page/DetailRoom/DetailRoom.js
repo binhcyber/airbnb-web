@@ -5,7 +5,6 @@ import { layChiTietPhongAction } from "../../redux/action/layChiTietPhongAction"
 import { Modal, Button } from "antd";
 import { Select } from "antd";
 import { WifiOutlined, StarOutlined } from "@ant-design/icons";
-
 import { Progress } from "antd";
 import UserComment from "./UserComment";
 import {
@@ -28,7 +27,6 @@ export default function DetailRoom() {
     return state.layChiTietPhongReducer;
   });
   const priceRoomday = chiTietPhong?.price;
-  console.log(priceRoomday);
   const [priceRoom, setPriceRoom] = useState(0);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [checkInDate, setCheckInDate] = useState("");
@@ -51,17 +49,13 @@ export default function DetailRoom() {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
-  function handleChange(value) {
-    console.log(`selected ${value}`);
-  }
+  function handleChange(value) {}
 
   function handleCheckIn(value, checkIn) {
-    console.log("CheckIn Selected Time: ", checkIn);
     setCheckInDate(checkIn);
     setAllowCheckIn(true);
   }
   function handleCheckOut(value, checkOut) {
-    console.log("CheckOut Selected Time: ", checkOut);
     setCheckOutDate(checkOut);
     setAllowCheckOut(true);
   }

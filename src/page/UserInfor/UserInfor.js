@@ -11,14 +11,14 @@ export default function UserInfor() {
   const { updateUserAvatar } = useSelector((state) => {
     return state.dsNguoiDungPhanTrangReducer;
   });
-  console.log(updateUserAvatar);
+
   const dispatch = useDispatch();
   const [imgSrc, setImgSrc] = useState("");
   const [fileAvatar, setFileAvatar] = useState("");
   const handleAvatar = (e) => {
     let file = e.target.files[0];
     setFileAvatar(file);
-    console.log(file);
+
     if (
       file.type === "image/jpg" ||
       file.type === "image/gif" ||
@@ -28,14 +28,13 @@ export default function UserInfor() {
       let reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = (e) => {
-        console.log(e.target.result);
         setImgSrc(e.target.result);
       };
     }
   };
   const updateAvatar = () => {
     let formData = new FormData();
-    console.log("fileAvatar", fileAvatar);
+
     formData.append("avatar", fileAvatar, fileAvatar.name);
     dispatch(capNhatNguoiDungAvatarAction(formData));
   };
@@ -73,7 +72,9 @@ export default function UserInfor() {
           <AiFillStar className="text text-xl" />
           <span className="text-xl">đánh giá</span>
         </h1>
-        <h1>Update your avatar</h1>
+        <h1 className="my-3 text-lg text-green-500 font-medium">
+          Update your avatar
+        </h1>
         <input
           type="file"
           onChange={handleAvatar}

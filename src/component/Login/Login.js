@@ -5,10 +5,8 @@ import * as Yup from "yup";
 import { dangNhapAction } from "../../redux/action/dangNhapAction";
 export default function Login() {
   const dispatch = useDispatch();
-  //   const { userLogin, userSignUp } = useSelector((state) => state.UserReducer);
   const SignupSchema = Yup.object().shape({
     password: Yup.string()
-      // .matches(/(userLogin?.matKhau)/, "Mât khẩu không hợp lệ")
       .min(4, "Too Short!")
       .max(50, "Too Long!")
       .required("Required"),
@@ -23,10 +21,6 @@ export default function Login() {
       }}
       validationSchema={SignupSchema}
       onSubmit={(values) => {
-        // same shape as initial values
-        console.log(values);
-        // let data = { ...values, maNhom: "GP01" };
-        // console.log(data);
         dispatch(dangNhapAction(values));
       }}
     >

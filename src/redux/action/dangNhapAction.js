@@ -8,14 +8,13 @@ export const dangNhapAction = (data) => {
     httpServ
       .dangNhap(data)
       .then((res) => {
-        console.log(res);
         if (res.status === 200) {
           dispatch({
             type: DANG_NHAP_TYPE,
             payload: res.data.user,
           });
           setTimeout(() => {
-            message.success("Đăng Ký Thành công");
+            message.success("Đăng nhập Thành công");
             window.location.assign("/");
             // <Redirect to="/" />;
           }, [3000]);

@@ -62,7 +62,6 @@ export default function UserComment({ id }) {
     e.preventDefault();
     const id = editDanhGia._id;
     const data = comment;
-    console.log(data);
     if (data.content.trim() === "" || data.content === undefined) {
       setComment({
         ...comment,
@@ -76,12 +75,10 @@ export default function UserComment({ id }) {
     }
     textInput.current.focus();
   };
-  console.log(comment.error);
   const newDangNhap = dangNhap?.name;
   const newDanhGia = danhGia?.map((item) => {
     return { ...item, newDangNhap, updateUserAvatar };
   });
-  console.log(newDanhGia);
   const [action, setAction] = useState(null);
   const numEachPage = 4;
   const [pagination, setPagination] = useState({

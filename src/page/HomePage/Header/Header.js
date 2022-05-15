@@ -21,8 +21,7 @@ export default function Header() {
   const { updateUserAvatar } = useSelector((state) => {
     return state.dsNguoiDungPhanTrangReducer;
   });
-  console.log(updateUserAvatar);
-  // console.log({ dangKy });
+
   const handleRemoveLocal = () => {
     dispatch({
       type: REMOVE_LOCAL,

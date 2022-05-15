@@ -14,7 +14,6 @@ export const layDanhGiaAction = (id) => {
           type: LAY_DANH_GIA,
           payload: res.data,
         });
-        console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -30,7 +29,6 @@ export const taoDanhGiaAction = (id, data) => {
           type: TAO_DANH_GIA,
           payload: res.data,
         });
-        console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -46,7 +44,6 @@ export const xoaDanhGiaAction = (id) => {
           type: XOA_DANH_GIA,
           payload: res.data,
         });
-        console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -62,7 +59,6 @@ export const capNhatDanhGiaAction = (id, data) => {
           type: CAP_NHAT_DANH_GIA,
           payload: res.data,
         });
-        console.log(res);
       })
       .catch((err) => {
         console.log(err);

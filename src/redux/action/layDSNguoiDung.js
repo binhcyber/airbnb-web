@@ -5,7 +5,6 @@ export const layDSNguoiDungAction = (minItem, maxItem) => {
     httpServ
       .layDSNguoiDung(minItem, maxItem)
       .then((res) => {
-        console.log(res);
         dispatch({
           type: SET_USER_PAGINATE,
           payload: res.data,

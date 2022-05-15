@@ -1,7 +1,6 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import { useDispatch } from "react-redux";
-// import { setUserSignUpAction } from "../../../redux/action/UserAction";
 import * as Yup from "yup";
 import { NavLink } from "react-router-dom";
 import { dangKyAction } from "../../redux/action/dangKyAction";
@@ -14,10 +13,20 @@ export default function Register() {
     name: Yup.string().required("Required"),
     address: Yup.string().required("Required"),
     birthday: Yup.string()
+      .matches(/^[0-9]+$/, "Only number!")
       .required("birthday is Required")
-      .test("DOB", "Birthday không hợp lệ", (value) => {
-        return moment().diff(moment(value), "years") >= 10;
-      }),
+      .min(0, "Too Short!")
+      .max(2, "Too Long!"),
+    birthmonth: Yup.string()
+      .matches(/^[0-9]+$/, "Only number!")
+      .required("birthday is Required")
+      .min(0, "Too Short!")
+      .max(2, "Too Long!"),
+    birthyear: Yup.string()
+      .matches(/^[0-9]+$/, "Only number!")
+      .required("birthday is Required")
+      .min(4, "Too Short!")
+      .max(4, "Too Long!"),
     password: Yup.string()
       .min(6, "Too Short!")
       .max(50, "Too Long!")
@@ -44,11 +53,14 @@ export default function Register() {
       }}
       validationSchema={SignupSchema}
       onSubmit={(values) => {
-        // same shape as initial values
-        // let data = { ...values, maNhom: "GP01" };
-
-        console.log(values);
-        dispatch(dangKyAction(values));
+        const yourBirthday = `${values.birthday}/${values.birthmonth}/${values.birthyear}`;
+        const data = {
+          ...values,
+          birthday: yourBirthday,
+          birthmonth: null,
+          birthyear: null,
+        };
+        dispatch(dangKyAction(data));
       }}
     >
       {({ errors, touched }) => (
@@ -85,15 +97,41 @@ export default function Register() {
             {errors.password && touched.password ? (
               <div>{errors.password}</div>
             ) : null}
-            <Field
-              type="text"
-              name="birthday"
-              class="px-4 py-3 mt-4 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
-              placeholder="22/11/1997"
-            />
-            {errors.birthday && touched.birthday ? (
-              <div>{errors.birthday}</div>
-            ) : null}
+            <div className="flex flex-row ">
+              <div className="flex flex-col">
+                <Field
+                  type="text"
+                  name="birthday"
+                  class="px-4 py-3 mt-4 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
+                  placeholder="Ngày sinh"
+                />
+                {errors.birthday && touched.birthday ? (
+                  <div>{errors.birthday}</div>
+                ) : null}
+              </div>
+              <div className="flex flex-col mx-3">
+                <Field
+                  type="text"
+                  name="birthmonth"
+                  class="px-4 py-3 mt-4 w-full  rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
+                  placeholder="Tháng sinh"
+                />
+                {errors.birthmonth && touched.birthmonth ? (
+                  <div>{errors.birthmonth}</div>
+                ) : null}
+              </div>
+              <div className="flex flex-col">
+                <Field
+                  type="text"
+                  name="birthyear"
+                  class="px-4 py-3 mt-4 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
+                  placeholder="năm sinh"
+                />
+                {errors.birthyear && touched.birthyear ? (
+                  <div>{errors.birthyear}</div>
+                ) : null}
+              </div>
+            </div>
             <Field
               type="text"
               name="address"

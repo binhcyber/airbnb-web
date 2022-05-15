@@ -17,7 +17,6 @@ export const DanhGiaReducer = (state = initialState, action) => {
       return { ...state };
     }
     case TAO_DANH_GIA: {
-      console.log(action.payload);
       let cloneDanhGia = [...state.danhGia, action.payload];
       state.danhGia = cloneDanhGia;
       return { ...state };
@@ -39,10 +38,9 @@ export const DanhGiaReducer = (state = initialState, action) => {
       return { ...state };
     }
     case CAP_NHAT_DANH_GIA: {
-      console.log(action.payload);
       state.editDanhGia = action.payload;
       let cloneDanhGia = [...state.danhGia];
-      console.log(cloneDanhGia);
+
       let index = cloneDanhGia.findIndex((item) => {
         return item._id === action.payload._id;
       });

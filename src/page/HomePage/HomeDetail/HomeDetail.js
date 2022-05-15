@@ -16,7 +16,6 @@ export default function HomeDetail() {
   const { dsViTri } = useSelector((state) => {
     return state.layDSViTriReducer;
   });
-  console.log(dsViTri);
   var settings = {
     dots: false,
     infinite: false,

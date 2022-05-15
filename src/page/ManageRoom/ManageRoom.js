@@ -29,8 +29,6 @@ export default function ManageRoom() {
     //lấy file ra từ e
     const file = e.target.files[0];
     const id = e.target.id;
-    console.log(id);
-    // console.log(file);
     //Tạo đổi tượng để đọc file
     if (
       file.type === "image/jpg" ||
@@ -41,7 +39,6 @@ export default function ManageRoom() {
       let reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = (e) => {
-        console.log(e.target.result);
         // setImgSrc(e.target.result);
       };
       let formData = new FormData();
@@ -49,7 +46,7 @@ export default function ManageRoom() {
       dispatch(capNhatHinhAnhPhongAction(id, formData));
     }
   };
-  console.log(dsPhong);
+
   const columns = [
     {
       title: "Mã Phòng",
@@ -162,7 +159,6 @@ export default function ManageRoom() {
   ];
   const data = dsPhong;
   const onSearch = (value) => {
-    console.log(value);
     dispatch({
       type: SEARCH_ROOM,
       payload: value,
@@ -175,9 +171,7 @@ export default function ManageRoom() {
       payload: tenPhong,
     });
   };
-  function onChange(pagination, filters, sorter, extra) {
-    console.log("params", pagination, filters, sorter, extra);
-  }
+  function onChange(pagination, filters, sorter, extra) {}
   return localStorageServ.userInfor.get() &&
     localStorageServ.userInfor.get().type === "ADMIN" ? (
     <div>

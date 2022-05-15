@@ -37,95 +37,77 @@ export default function ThemRoom() {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
-  function onChangeGuest(value) {
-    console.log("Guest", value);
-  }
-  function onChangeBedRoom(value) {
-    console.log("BedRoom", value);
-  }
-  function onChangeBathRoom(value) {
-    console.log("BathRoom", value);
-  }
+  function onChangeGuest(value) {}
+  function onChangeBedRoom(value) {}
+  function onChangeBathRoom(value) {}
   function onChangeElevator(checked) {
-    console.log(`Elevator ${checked}`);
-    console.log(typeof checked);
     setUtilities({
       ...utilities,
       elevator: checked,
     });
   }
-  console.log(utilities);
+
   function onChangeHotTub(checked) {
-    console.log(`HotTub ${checked}`);
     setUtilities({
       ...utilities,
       hotTub: checked,
     });
   }
   function onChangePool(checked) {
-    console.log(`Pool ${checked}`);
     setUtilities({
       ...utilities,
       pool: checked,
     });
   }
   function onChangeIndoorFireplace(checked) {
-    console.log(`IndoorFireplace ${checked}`);
     setUtilities({
       ...utilities,
       indoorFireplace: checked,
     });
   }
   function onChangeDryer(checked) {
-    console.log(`Dryer ${checked}`);
     setUtilities({
       ...utilities,
       dryer: checked,
     });
   }
   function onChangeGym(checked) {
-    console.log(`Gym ${checked}`);
     setUtilities({
       ...utilities,
       gym: checked,
     });
   }
   function onChangeKitchen(checked) {
-    console.log(`Kitchen ${checked}`);
     setUtilities({
       ...utilities,
       kitchen: checked,
     });
   }
   function onChangeWifi(checked) {
-    console.log(`Wifi ${checked}`);
     setUtilities({
       ...utilities,
       wifi: checked,
     });
   }
   function onChangeHeating(checked) {
-    console.log(`Heating ${checked}`);
     setUtilities({
       ...utilities,
       heating: checked,
     });
   }
   function onChangeCableTV(checked) {
-    console.log(`CableTV ${checked}`);
     setUtilities({
       ...utilities,
       cableTV: checked,
     });
   }
   const onFinish = (values) => {
-    console.log("Success:", values);
     const data = {
       ...values,
       locationId: null,
     };
     const newData = { ...data, ...utilities };
-    console.log(newData);
+
     dispatch(taoPhongAction(newData));
   };
 
