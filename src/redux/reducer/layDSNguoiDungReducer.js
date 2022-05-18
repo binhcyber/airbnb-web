@@ -28,6 +28,7 @@ export const dsNguoiDungPhanTrangReducer = (state = initialState, action) => {
       return { ...state };
     }
     case XOA_NGUOI_DUNG: {
+      console.log(action.payload._id);
       const dsPhongPhanTrangUpdate = [...state.dsPhongPhanTrang];
       let index = dsPhongPhanTrangUpdate.findIndex((item) => {
         return item._id === action.payload._id;

@@ -60,6 +60,12 @@ export default function Login() {
                   Register now
                 </NavLink>
               </p>
+              <p class="mt-1 text-xs font-light text-gray-500">
+                Are you come back Home Page?
+                <NavLink to="/" class="ml-1 font-medium text-blue-400">
+                  Yes
+                </NavLink>
+              </p>
             </div>
           </Form>
         </div>

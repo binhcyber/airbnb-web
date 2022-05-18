@@ -23,6 +23,7 @@ export default function ManageUser() {
   const { dsPhongPhanTrang } = useSelector((state) => {
     return state.dsNguoiDungPhanTrangReducer;
   });
+  console.log(dsPhongPhanTrang);
   const numEachPage = 10;
   const [pagination, setPagination] = useState({
     minValue: 0,
@@ -65,12 +66,8 @@ export default function ManageUser() {
               >
                 {user.name}
               </th>
-
               <td className="px-6 py-4">{user.email}</td>
               <td className="px-6 py-4">{user.phone}</td>
-              {/* <td className="px-6 py-4">
-                {moment(user.birthday).format("DD/MM/YYYY")}
-              </td> */}
               <td className="px-6 py-4">
                 {user.type === "ADMIN" ? (
                   <span className="text-red-500 font-medium px-1 border-red-500 border-1">
@@ -90,6 +87,7 @@ export default function ManageUser() {
                   title="Cảnh báo"
                   visible={isModalVisible}
                   onOk={() => {
+                    console.log(user._id);
                     dispatch(xoaNguoiDungAction(user._id));
                   }}
                   onCancel={handleCancel}

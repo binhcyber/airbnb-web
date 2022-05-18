@@ -53,13 +53,6 @@ function App() {
               return <Layout Component={UserInfor} />;
             }}
           />
-          {/* <Route
-            path={"*"}
-            exact
-            render={() => {
-              return <NotFoundLayout Component={NotFoundPages} />;
-            }}
-          /> */}
           <Route path="/login" exact component={Login} />
           <Route path="/register" exact component={Register} />
           <Route path="/edituser" exact component={EditUser} />

@@ -26,6 +26,7 @@ export const xoaNguoiDungAction = (id) => {
     httpServ
       .xoaNguoiDung(id)
       .then((res) => {
+        console.log(res);
         dispatch({
           type: XOA_NGUOI_DUNG,
           payload: res.data,
