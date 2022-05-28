@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import { layDSViTriAction } from "../../../redux/action/layDanhSachViTriAction";
@@ -6,7 +6,9 @@ import { REMOVE_LOCAL } from "../../../redux/type/localStorageType";
 import httpServ from "../../../serviceWorker/http.service";
 import localStorageServ from "../../../serviceWorker/locaStorage.service";
 import InputSearch from "./InputSearch";
+import ANIMATION from "../../../assets/animation1.gif";
 export default function Header() {
+  const [nav, setNav] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -22,18 +24,33 @@ export default function Header() {
     return state.dsNguoiDungPhanTrangReducer;
   });
 
+  const changeBackground = () => {
+    if (window.scrollY >= 150) {
+      setNav(true);
+    } else {
+      setNav(false);
+    }
+  };
+  window.addEventListener("scroll", changeBackground);
+  console.log(nav);
   const handleRemoveLocal = () => {
     dispatch({
       type: REMOVE_LOCAL,
     });
   };
   return (
-    <nav className=" bg-white w-full flex justify-between items-center mx-auto lg:px-8 md:px-8 px-1 h-20 fixed top-0 right-0 left-0 z-20 shadow-md">
-      {/* logo */}
+    <nav
+      className={
+        nav === false
+          ? "w-full bg-transparent flex justify-between items-center mx-auto lg:px-8 md:px-8 px-1 h-20 fixed top-0 right-0 left-0 z-20 shadow-md"
+          : "w-full bg-white flex justify-between items-center mx-auto lg:px-8 md:px-8 px-1 h-20 fixed top-0 right-0 left-0 z-20 shadow-md"
+      }
+    >
       <div className="inline-flex">
         <NavLink className="_o6689fn" to="/">
           <div className="hidden md:block">
             <svg
+              color="#E60965"
               width={102}
               height={32}
               fill="currentcolor"
@@ -54,13 +71,12 @@ export default function Header() {
           </div>
         </NavLink>
       </div>
-      {/* end logo */}
-      {/* search bar */}
-      <div className="block sm:block flex-shrink flex-grow-0 justify-start px-2">
+      <div className="block lg:hidden md:hidden flex-shrink flex-grow-0 justify-start px-2">
         <div className="inline-block">
           <div className="inline-flex items-center max-w-full">
             <button
-              className="flex items-center flex-grow-0 flex-shrink pl-2 relative w-60 border rounded-full px-1  py-1"
+              id="header_search"
+              className="flex items-center flex-grow-0 flex-shrink pl-2 relative w-40 "
               type="button"
             >
               <InputSearch dsViTri={dsViTri} />
@@ -68,8 +84,7 @@ export default function Header() {
           </div>
         </div>
       </div>
-      {/* end search bar */}
-      {/* login */}
+
       <div className="flex-initial">
         <div className="flex justify-end items-center relative">
           <div className="flex mr-4 hidden items-center lg:flex md:flex sm:hidden ">
@@ -225,8 +240,6 @@ export default function Header() {
           </div>
         </div>
       </div>
-
-      {/* end login */}
     </nav>
   );
 }

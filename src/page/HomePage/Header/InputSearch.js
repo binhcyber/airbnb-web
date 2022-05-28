@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { AutoComplete, Input } from "antd";
 import { EnvironmentOutlined } from "@ant-design/icons";
 import { NavLink, useHistory } from "react-router-dom";
-
 export default function InputSearch({ dsViTri }) {
   const cloneDsViTri = dsViTri.map((vitri) => {
     return { value: vitri.province, id: vitri._id };
@@ -21,6 +20,7 @@ export default function InputSearch({ dsViTri }) {
               justifyContent: "space-between",
               alignItems: "center",
             }}
+            className={"hover:bg-pink-500 hover:text-black "}
             onClick={() => {
               history.push("/room");
             }}
@@ -49,8 +49,8 @@ export default function InputSearch({ dsViTri }) {
         option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
       }
       dropdownStyle={{
-        maxHeight: "190px",
-        maxWidth: "200px",
+        height: "200px",
+        width: "400px",
       }}
       options={(options, lists)}
       onSelect={onSelect}
@@ -58,7 +58,7 @@ export default function InputSearch({ dsViTri }) {
     >
       <Input
         size="large"
-        placeholder="Where are you going?"
+        placeholder="All Location"
         className="hover:border-transparent"
         enterButton
       />

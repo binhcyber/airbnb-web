@@ -6,9 +6,14 @@ import "slick-carousel/slick/slick-theme.css";
 import { Card } from "antd";
 import { layDSViTriAction } from "../../../redux/action/layDanhSachViTriAction";
 import { NavLink } from "react-router-dom";
-import "../../PageCss/Page.css";
+import InputSearch from "../Header/InputSearch";
+import { BsFillArrowRightCircleFill } from "react-icons/bs/index";
+import ANIMATION from "../../../assets/animation1.gif";
+
+import { useHistory } from "react-router-dom";
 const { Meta } = Card;
 export default function HomeDetail() {
+  const history = useHistory();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(layDSViTriAction());
@@ -16,6 +21,7 @@ export default function HomeDetail() {
   const { dsViTri } = useSelector((state) => {
     return state.layDSViTriReducer;
   });
+  console.log(dsViTri);
   var settings = {
     dots: false,
     infinite: false,
@@ -100,18 +106,64 @@ export default function HomeDetail() {
       );
     });
   };
+  const renderListSearch = () => {
+    return dsViTri?.map((item) => {
+      return (
+        <li
+          onClick={() => {
+            history.push("/room");
+          }}
+          className="flex items-center hover:rounded-tl-lg hover:rounded-bl-lg hover:bg-pink-500 hover:text-black"
+        >
+          <img
+            className={
+              "rounded-lg object-cover object-center w-12 h-12 flex-shrink"
+            }
+            src={item.image ? item.image : ANIMATION}
+          />
+          <p className="flex-grow font-normal text-lg m-0">{item.name}</p>
+        </li>
+      );
+    });
+  };
+
   return (
-    <div className="mt-24">
-      <div className="relative container mx-auto ">
+    <div>
+      <div className="relative ">
         <img
-          src="https://picsum.photos/1200/600"
-          className=" object-cover object-center rounded-xl mx-auto"
+          src="https://projectairbnb.vercel.app/static/media/heroImgOne.d825d7d1a6d9c90b5df1.jpg"
+          className=" object-cover object-center mx-auto"
         />
-        <div className="absolute homeDetail left-28 bottom-5 md:text-3xl md:bottom-32 md:left-48 lg:text-4xl lg:bottom-32 lg:left-80 z-10 text-white font-medium ">
-          Hãy để trí tò mò của bạn dẫn lối
+        <div id="searchInput">
+          <InputSearch dsViTri={dsViTri} />
+          <button className="location group relative bg-white p-0 w-80">
+            <p className=" m-0 text-gray-400 text-lg">Where do you want go?</p>
+            <div className="downshow_location lg:group-hover:block md:group-focus:block group-focus:block hidden">
+              <p className="lg:pt-3 md:pt-3 pt-1 font-medium lg:text-lg md:text-lg text-base text-gray-400">
+                Đi bất cứ đâu, bất cứ lúc nào
+              </p>
+              <div className="flex justify-between items-center rounded-3xl px-3 shadow-2xl text-pink-600">
+                <p
+                  onClick={() => {
+                    history.push("/room");
+                  }}
+                  className="text-primary mb-0.5 font-medium text-xl"
+                >
+                  Tôi linh hoạt
+                </p>
+                <BsFillArrowRightCircleFill className="text-primary font-medium text-2xl pb-1" />
+              </div>
+            </div>
+            <div className="list_location group-focus:block hidden">
+              <ul className="pt-3 space-y-3">{renderListSearch()}</ul>
+            </div>
+          </button>
+          <div className="searchButton">
+            <button className="setButton">Search</button>
+          </div>
         </div>
       </div>
-      <div className="container my-5 mx-auto py-5">
+      <div className="container my-5 mx-auto py-5 lg:z-0 md:z-0 sm:z-0">
         <Slider {...settings}>{renderLocation()}</Slider>
       </div>
       <div className="container mx-auto">

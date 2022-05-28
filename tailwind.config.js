@@ -1,13 +1,16 @@
 module.exports = {
   important: true,
-  // mode: 'jit',
+  mode: "jit",
 
   purge: ["./src/**/*.js", "./src/**/**/*.js"],
   darkMode: "class", // or 'media' or 'className'
   theme: {
     extend: {
+      fontFamily: {
+        body: ["Poppins"],
+      },
       colors: {
-        dark: "rgba(0,0,0,.87);",
+        primary: "#E60965",
       },
       borderWidth: {
         5: "5px",
@@ -48,6 +51,7 @@ module.exports = {
   variants: {
     extend: {
       display: ["group-focus"],
+      display: ["group-hover"],
     },
   },
 };

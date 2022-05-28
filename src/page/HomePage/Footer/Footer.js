@@ -9,6 +9,7 @@ export default function Footer() {
           <NavLink className="_o6689fn" to="/">
             <div className="hidden md:block">
               <svg
+                color="#E60965"
                 width={102}
                 height={32}
                 fill="currentcolor"
@@ -37,7 +38,7 @@ export default function Footer() {
             <ul className="text-gray-600 dark:text-gray-400">
               <li className="mb-4">
                 <NavLink to="/" className="hover:underline">
-                 AirBnb
+                  AirBnb
                 </NavLink>
               </li>
               <li>
