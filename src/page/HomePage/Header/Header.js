@@ -6,7 +6,7 @@ import { REMOVE_LOCAL } from "../../../redux/type/localStorageType";
 import httpServ from "../../../serviceWorker/http.service";
 import localStorageServ from "../../../serviceWorker/locaStorage.service";
 import InputSearch from "./InputSearch";
-import ANIMATION from "../../../assets/animation1.gif";
+import ANIMATION from "../../../assets/animation3.gif";
 export default function Header() {
   const [nav, setNav] = useState(false);
   const history = useHistory();
@@ -32,12 +32,12 @@ export default function Header() {
     }
   };
   window.addEventListener("scroll", changeBackground);
-  console.log(nav);
   const handleRemoveLocal = () => {
     dispatch({
       type: REMOVE_LOCAL,
     });
   };
+
   return (
     <nav
       className={
@@ -89,17 +89,17 @@ export default function Header() {
         <div className="flex justify-end items-center relative">
           <div className="flex mr-4 hidden items-center lg:flex md:flex sm:hidden ">
             <a
-              className="inline-block py-2 px-3 hover:bg-gray-200 rounded-full"
+              className="inline-block py-2 px-3 hover:text-white hover:bg-primary rounded-full"
               href="#"
             >
-              <div className="flex items-center relative cursor-pointer whitespace-nowrap">
+              <div className="flex items-center hover:text-gray-200 relative cursor-pointer whitespace-nowrap">
                 Become a host
               </div>
             </a>
             <div className="block relative">
               <button
                 type="button"
-                className="inline-block py-2 px-3 hover:bg-gray-200 rounded-full relative "
+                className="inline-block py-2 px-3 hover:text-white hover:bg-primary transition-all duration-500 ease-in-out rounded-full relative "
               >
                 <div className="flex items-center h-5">
                   <div className="_xpkakx">
@@ -129,7 +129,7 @@ export default function Header() {
             <div className="inline relative">
               <button
                 type="button"
-                className="inline-flex group items-center relative px-2 border rounded-full hover:shadow-lg"
+                className="inline-flex group items-center relative px-2 border rounded-full transition-all duration-500 ease-in-out hover:text-white hover:bg-primary hover:shadow-lg"
               >
                 <div className="pl-1">
                   <svg
@@ -180,17 +180,17 @@ export default function Header() {
                     </svg>
                   )}
                 </div>
-                <div className="absolute top-11 right-0 z-10 group-focus:block hidden rounded-lg shadow-xl h-72 w-64 bg-white p-5">
+                <div className="absolute top-11 right-0 z-10 group-focus:block hidden rounded-lg shadow-xl h-72 w-64 transition-all duration-500 ease-in-out hover:bg-primary bg-white p-5">
                   {dangNhap ? (
                     <>
-                      <p className="font-medium text-left text-base hover:bg-gray-100 py-1 rounded-md m-0">
+                      <p className="font-medium text-left text-base hover:text-black hover:bg-gray-100 py-1 rounded-md m-0">
                         Chào {dangNhap.name}
                       </p>
                       <p
                         onClick={() => {
                           history.push("/adminPriority");
                         }}
-                        className="font-medium text-left text-base hover:bg-gray-100 rounded-md py-1 m-0"
+                        className="font-medium text-left text-base hover:text-black hover:bg-gray-100 rounded-md py-1 m-0"
                       >
                         Quản lý admin
                       </p>
@@ -199,13 +199,13 @@ export default function Header() {
                         onClick={() => {
                           return history.push("/user");
                         }}
-                        className="text-left text-base hover:bg-gray-100 rounded-md py-1 m-0 "
+                        className="text-left text-base hover:text-black hover:bg-gray-100 rounded-md py-1 m-0 "
                       >
                         Thông tin cá nhân
                       </p>
                       <p
                         onClick={handleRemoveLocal}
-                        className="text-center  text-base hover:bg-gray-100 rounded-md py-1 m-3 "
+                        className="text-center  text-base hover:text-black hover:bg-gray-100 rounded-md py-1 m-3 "
                       >
                         Đăng Xuất
                       </p>

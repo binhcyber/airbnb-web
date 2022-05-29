@@ -9,7 +9,8 @@ import { NavLink } from "react-router-dom";
 import InputSearch from "../Header/InputSearch";
 import { BsFillArrowRightCircleFill } from "react-icons/bs/index";
 import ANIMATION from "../../../assets/animation1.gif";
-
+import BG from "../../../assets/bg1.gif";
+import TypeWriterEffect from "react-typewriter-effect";
 import { useHistory } from "react-router-dom";
 const { Meta } = Card;
 export default function HomeDetail() {
@@ -18,6 +19,25 @@ export default function HomeDetail() {
   useEffect(() => {
     dispatch(layDSViTriAction());
   }, []);
+  useEffect(() => {
+    const typeWriter = () => {
+      return (
+        <TypeWriterEffect
+          textStyle={{
+            fontFamily: "Red Hat Display",
+            color: "#E60965",
+            fontWeight: 500,
+            fontSize: "1.5em",
+          }}
+          startDelay={500}
+          cursorColor="#E60965"
+          multiText={["Cities", "Hotels", "Places"]}
+          multiTextDelay={500}
+          typeSpeed={30}
+        />
+      );
+    };
+  });
   const { dsViTri } = useSelector((state) => {
     return state.layDSViTriReducer;
   });
@@ -71,6 +91,7 @@ export default function HomeDetail() {
       },
     ],
   };
+
   const renderLocation = () => {
     return dsViTri?.map((vitri, index) => {
       return (
@@ -113,7 +134,7 @@ export default function HomeDetail() {
           onClick={() => {
             history.push("/room");
           }}
-          className="flex items-center hover:rounded-tl-lg hover:rounded-bl-lg hover:bg-pink-500 hover:text-black"
+          className="flex items-center hover:rounded-tl-lg hover:rounded-bl-lg hover:bg-pink-500 hover:text-white transition-all duration-500 ease-in-out"
         >
           <img
             className={
@@ -136,25 +157,25 @@ export default function HomeDetail() {
         />
         <div id="searchInput">
           <InputSearch dsViTri={dsViTri} />
-          <button className="location group relative bg-white p-0 w-80">
+          <button className="location group relative bg-white p-0 w-80 transition-all duration-500 ease-in-out">
             <p className=" m-0 text-gray-400 text-lg">Where do you want go?</p>
             <div className="downshow_location lg:group-hover:block md:group-focus:block group-focus:block hidden">
               <p className="lg:pt-3 md:pt-3 pt-1 font-medium lg:text-lg md:text-lg text-base text-gray-400">
                 Đi bất cứ đâu, bất cứ lúc nào
               </p>
-              <div className="flex justify-between items-center rounded-3xl px-3 shadow-2xl text-pink-600">
+              <div className="flex justify-between items-center rounded-3xl px-2 shadow-lg text-pink-600">
                 <p
                   onClick={() => {
                     history.push("/room");
                   }}
-                  className="text-primary mb-0.5 font-medium text-xl"
+                  className="text-primary mb-0.5 font-medium text-xl "
                 >
                   Tôi linh hoạt
                 </p>
                 <BsFillArrowRightCircleFill className="text-primary font-medium text-2xl pb-1" />
               </div>
             </div>
-            <div className="list_location group-focus:block hidden">
+            <div className="list_location group-focus:block hidden transition-all duration-500 ease-in-out">
               <ul className="pt-3 space-y-3">{renderListSearch()}</ul>
             </div>
           </button>
@@ -166,36 +187,40 @@ export default function HomeDetail() {
       <div className="container my-5 mx-auto py-5 lg:z-0 md:z-0 sm:z-0">
         <Slider {...settings}>{renderLocation()}</Slider>
       </div>
-      <div className="container mx-auto">
-        <h1 className="text-2xl">Khám phá trải nghiệm AirBnB</h1>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="relative">
-            <img
-              src="https://picsum.photos/581/700"
-              className="object-cover object-center rounded-xl text-center z-10"
-            />
-            <div className="absolute text-lg top-5 left-5 md:top-5 md:left-5 md:text-4xl lg:top-5 lg:left-5 lg:text-4xl font-medium text-white">
-              Những điều nên trải nghiệm trong chuyến đi của bạn
-            </div>
-          </div>
-          <div className="relative">
-            <img
-              src="https://picsum.photos/580/700"
-              className="object-cover object-center rounded-xl"
-            />
-            <div className="absolute text-lg top-5 left-5 md:top-5 md:left-5 md:text-4xl lg:top-5 lg:left-5 lg:text-4xl font-medium text-white">
-              Những điều nên trải nghiệm tại nhà
-            </div>
-          </div>
-        </div>
-      </div>
+
       <div className="relative my-5">
-        <img
-          src="https://picsum.photos/1380/680"
-          className="object-cover object-center mx-auto"
-        />
-        <div className="absolute text-2xl top-10 left-16 lg:top-10 md:top-10 md:left-16 lg:left-16 md:text-6xl lg:text-6xl font-medium text-white">
-          Bạn có thắc mắc về việc đón tiếp khách?
+        <img src={BG} className="object-cover object-center mx-auto w-full" />
+        <div className="absolute text-2xl left-1/2 transform top-10 -translate-x-1/2 md:text-6xl lg:text-6xl font-medium text-white">
+          <div className="flex items-center space-x-3">
+            <span>Find Nearby</span>
+            <TypeWriterEffect
+              textStyle={{
+                fontFamily: "Red Hat Display",
+                color: "#E60965",
+                fontWeight: 500,
+                fontSize: "1.5em",
+              }}
+              startDelay={500}
+              cursorColor="#E60965"
+              multiText={["Cities", "Hotels", "Places"]}
+              multiTextDelay={500}
+              typeSpeed={30}
+            />
+          </div>
+
+          <div className="text-gray-300 text-2xl">
+            Explore top-rated attractions, activities and more!
+          </div>
+          <button
+            onClick={() => {
+              history.push("/room");
+            }}
+            className={
+              "p-3 rounded-full font-semibold text-2xl border-white border-solid border-1 text-white hover:bg-primary hover:text-white hover:border-transparent transition-all duration-500 ease-in-out "
+            }
+          >
+            Let's Explore
+          </button>
         </div>
       </div>
     </div>

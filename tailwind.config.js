@@ -6,11 +6,8 @@ module.exports = {
   darkMode: "class", // or 'media' or 'className'
   theme: {
     extend: {
-      fontFamily: {
-        body: ["Poppins"],
-      },
       colors: {
-        primary: "#E60965",
+        primary: "#ec4899",
       },
       borderWidth: {
         5: "5px",

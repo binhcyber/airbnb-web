@@ -14,10 +14,13 @@ import {
   SET_WIFI,
 } from "../../redux/type/layDanhSachPhongType";
 
+import { useHistory } from "react-router-dom";
 export default function ListRoom() {
   const { dsPhong, dsPhongUtilities } = useSelector((state) => {
     return state.layDSPhongReducer;
   });
+  const history = useHistory();
+
   const [pagination, setPagination] = useState({
     minValue: 0,
     maxValue: 10,
@@ -108,6 +111,7 @@ export default function ListRoom() {
       payload: kitchen,
     });
   };
+
   return (
     <div className="mt-24">
       <div>
@@ -170,20 +174,19 @@ export default function ListRoom() {
       </div>
       {dsPhongUtilities === null ? (
         <div className="container mx-auto space-y-8">
-          <div className="grid lg:grid-cols-2 md:grid-cols-1 lg:gap-2 grid-cols-1 container mx-auto p-0">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:gap-2 md:gap-1 container mx-auto p-0">
             {dsPhong &&
               dsPhong.length > 0 &&
               dsPhong
                 .slice(pagination.minValue, pagination.maxValue)
                 .map((phong, index) => {
                   return (
-                    <NavLink
+                    <div
                       key={phong._id}
-                      to={`/detailroom/${phong._id}`}
-                      className="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+                      className="relative items-center w-80 py-8 rounded-3xl text-center bg-white border shadow-md md:flex-row md:max-w-xl cursor-pointer hover:bg-primary hover:text-white transition-all duration-500 ease-in-out"
                     >
                       <img
-                        className="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+                        className="object-cover w-full mx-auto h-96 rounded-3xl md:h-auto md:w-48 md:rounded-lg sm:rounded-lg"
                         src={
                           phong.image
                             ? phong.image
@@ -192,24 +195,35 @@ export default function ListRoom() {
                         alt
                       />
                       <div className="flex flex-col justify-between p-2 leading-normal">
-                        <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                        <span className="mb-2 text-sm font-semibold ">
                           {phong.name}
-                        </h5>
-                        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                        </span>
+                        <p className="m-0 text-sm text-gray-400">
                           {phong.description?.length >= 50
                             ? phong.description.slice(0, 50) + "..."
                             : phong.description}
                         </p>
-                        <div className="flex flex-row">
+                        <div className="flex flex-row justify-center text-sm text-gray-400">
                           <span>Guests: {phong.guests} - </span>
                           <span>Bedroom: {phong.bedroom} - </span>
                           <span>Bathroom: {phong.bath} </span>
                         </div>
-                        <p className="text-red-500 text-xl font-medium">
-                          Price: {phong.price}
+                        <p className=" text-sm mt-2 text-center space-x-5">
+                          <span className="font-bold text-sm">VND </span>
+                          {phong.price.toLocaleString()}/night
                         </p>
+                        <div>
+                          <button
+                            onClick={() => {
+                              history.push(`/detailroom/${phong._id}`);
+                            }}
+                            className="rounded-3xl text-sm border-2 border-solid border-gray-300 hover:bg-red-800 transition-all duration-500 ease-in-out hover:cursor-pointer px-3 py-2"
+                          >
+                            Detail
+                          </button>
+                        </div>
                       </div>
-                    </NavLink>
+                    </div>
                   );
                 })}
           </div>
@@ -221,7 +235,7 @@ export default function ListRoom() {
         </div>
       ) : (
         <div className="container mx-auto space-y-8">
-          <div className="grid lg:grid-cols-2 lg:gap-2 md:grid-cols-1 grid-cols-1 container mx-auto p-0">
+          <div className="grid lg:grid-cols-3 lg:gap-2 container mx-auto p-0">
             {dsPhongUtilities &&
               dsPhongUtilities.length > 0 &&
               dsPhongUtilities
@@ -230,7 +244,6 @@ export default function ListRoom() {
                   return (
                     <NavLink
                       key={phong._id}
-                      // style={{ minWidth: "576px", maxHeight: "200px" }}
                       to={`/detailroom/${phong._id}`}
                       className="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
                     >
@@ -252,12 +265,12 @@ export default function ListRoom() {
                             ? phong.description.slice(0, 50) + "..."
                             : phong.description}
                         </p>
-                        <div className="flex flex-row">
+                        <div className="flex flex-row justify-center">
                           <span>Guests: {phong.guests} - </span>
                           <span>Bedroom: {phong.bedroom} - </span>
                           <span>Bathroom: {phong.bath} </span>
                         </div>
-                        <p className="text-red-500 text-xl font-medium">
+                        <p className="text-red-500 text-xl m-0 font-medium">
                           Price: {phong.price}
                         </p>
                       </div>

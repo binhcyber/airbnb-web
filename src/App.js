@@ -18,6 +18,7 @@ import AdminLayout from "./template/AdminLayout";
 import ManageRoom from "./page/ManageRoom/ManageRoom";
 import ThemRoom from "./page/ManageRoom/ThemRoom";
 import EditRoom from "./page/ManageRoom/EditRoom";
+import Test from "./page/ListRoom/test";
 export let history = createBrowserHistory();
 function App() {
   return (
@@ -57,6 +58,8 @@ function App() {
           <Route path="/register" exact component={Register} />
           <Route path="/edituser" exact component={EditUser} />
           <Route path="/adminPriority" exact component={AdminPriority} />
+          <Route path="/test" exact component={Test} />
+
           <Route
             path="/admin"
             exact

@@ -32,20 +32,20 @@ export default function Footer() {
         </div>
         <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
           <div>
-            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+            <h2 className="mb-6 text-sm font-semibold text-primary uppercase dark:text-white">
               Resources
             </h2>
             <ul className="text-gray-600 dark:text-gray-400">
-              <li className="mb-4">
-                <NavLink to="/" className="hover:underline">
+              <li className="mb-4 footer_air">
+                <a href="/" className="hover:text-primary">
                   AirBnb
-                </NavLink>
+                </a>
               </li>
-              <li>
+              <li className="footer_air">
                 <a
                   target="_blank"
                   href="https://tailwindcss.com/"
-                  className="hover:underline"
+                  className="hover:text-primary"
                 >
                   Tailwind CSS
                 </a>
@@ -53,24 +53,24 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+            <h2 className="mb-6 text-sm font-semibold text-primary uppercase dark:text-white">
               Follow us
             </h2>
             <ul className="text-gray-600 dark:text-gray-400">
-              <li className="mb-4">
+              <li className="mb-4 footer_air">
                 <a
                   target="_blank"
                   href="https://github.com/binhcyber"
-                  className="hover:underline "
+                  className="hover:text-primary "
                 >
                   Github
                 </a>
               </li>
-              <li>
+              <li className="footer_air">
                 <a
                   target="_blank"
                   href="https://www.facebook.com/profile.php?id=100005753327465"
-                  className="hover:underline"
+                  className="hover:text-primary"
                 >
                   Facebook
                 </a>
@@ -78,17 +78,17 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+            <h2 className="mb-6 text-sm font-semibold text-primary uppercase dark:text-white">
               Legal
             </h2>
             <ul className="text-gray-600 dark:text-gray-400">
-              <li className="mb-4">
-                <a href="#" className="hover:underline">
+              <li className="mb-4 footer_air">
+                <a href="#" className="hover:text-primary">
                   Privacy Policy
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:underline">
+                <a href="#" className="hover:text-primary">
                   Terms &amp; Conditions
                 </a>
               </li>
@@ -99,8 +99,8 @@ export default function Footer() {
       <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
       <div className="sm:flex sm:items-center sm:justify-between">
         <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-          © 2022{" "}
-          <NavLink to="/" className="hover:underline">
+          © 2022
+          <NavLink to="/" className="hover:text-primary">
             AirBnB™
           </NavLink>
           . All Rights Reserved.
@@ -109,7 +109,7 @@ export default function Footer() {
           <a
             target="_blank"
             href="https://www.facebook.com/profile.php?id=100005753327465"
-            className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+            className="text-gray-500 hover:text-primary dark:hover:text-white"
           >
             <svg
               className="w-5 h-5"
@@ -126,7 +126,7 @@ export default function Footer() {
           </a>
           <a
             href="#"
-            className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+            className="text-gray-500 hover:text-primary dark:hover:text-white"
           >
             <svg
               className="w-5 h-5"
@@ -143,7 +143,7 @@ export default function Footer() {
           </a>
           <a
             href="#"
-            className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+            className="text-gray-500 hover:text-primary dark:hover:text-white"
           >
             <svg
               className="w-5 h-5"

@@ -24,6 +24,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-slick": "^0.28.1",
+    "react-typewriter-effect": "^1.1.0",
     "redux": "^4.1.1",
     "redux-thunk": "^2.4.1",
     "slick-carousel": "^1.8.1",
@@ -37,7 +38,7 @@
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
-    "deploy":"sh ./deploy-surge.sh"
+    "deploy": "sh ./deploy-surge.sh"
   },
   "eslintConfig": {
     "extends": [
