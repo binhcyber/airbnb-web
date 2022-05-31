@@ -79,7 +79,10 @@ export default function DetailRoom() {
     }
   };
   return (
-    <div className="lg:container md:container lg:mx-auto md:mx-auto lg:mt-24 md:mt-24 mt-24 ml-5">
+    <div
+      style={{ margin: "0 10px" }}
+      className="lg:container md:container lg:mx-auto md:mx-auto lg:mt-24 md:mt-24 mt-24"
+    >
       <div className="flex flex-row items-center justify-center rounded-lg shadow-xl space-x-6 py-6 hover:bg-primary hover:text-white">
         <div className="flex flex-col justify-center items-center">
           <img
@@ -148,11 +151,11 @@ export default function DetailRoom() {
           </>
         </div>
       </div>
-      <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 mt-12">
+      <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 mt-12 space-y-8">
         <div>
           <h1 className="text-2xl">Nơi này có những gì cho bạn</h1>
           <div className="grid grid-cols-2">
-            <div className=" justify-start items-center flex flex-row space-x-2 space-x-2">
+            <div className=" justify-start items-center flex flex-row space-x-2">
               <WifiOutlined className="text-2xl text-primary" />
               {chiTietPhong?.wifi ? (
                 <p className="utility">Wifi</p>
@@ -234,7 +237,7 @@ export default function DetailRoom() {
             </div>
           </div>
         </div>
-        <div className="w-327 h-460 rounded-lg shadow-lg p-4">
+        <div className="w-327 h-460 rounded-3xl border-solid border-2 border-primary shadow-lg p-4 my-0 mx-auto">
           <div>
             <div className="flex flex-row justify-between items-center">
               <div className="flex flex-row">
@@ -322,7 +325,7 @@ export default function DetailRoom() {
         </div>
       </div>
       <div className="mt-10">
-        <div className="flex flex-row justify-start items-center">
+        <div className="flex flex-row justify-start items-center ">
           <StarOutlined className="text-lg mb-1 mr-1" />
           <span className=" text-lg font-bold">5 - đánh giá</span>
         </div>

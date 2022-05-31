@@ -25,7 +25,7 @@ export default function Login() {
       }}
     >
       {({ errors, touched }) => (
-        <div class="w-full md:w-1/2 lg:w-1/3 mx-auto my-12 border-solid border-2 rounded-3xl border-primary shadow-2xl mt-24 mx-7 p-6 ">
+        <div class="w-2/3 md:w-1/2 lg:w-1/3 border-solid border-2 rounded-3xl border-primary shadow-2xl p-6 mt-10 my-0 mx-auto">
           <h1 class="text-lg text-primary font-bold">Login</h1>
           <Form class="flex flex-col mt-4">
             <Field

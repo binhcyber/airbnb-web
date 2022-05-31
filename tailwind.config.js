@@ -1,6 +1,6 @@
 module.exports = {
   important: true,
-  mode: "jit",
+  // mode: "jit",
 
   purge: ["./src/**/*.js", "./src/**/**/*.js"],
   darkMode: "class", // or 'media' or 'className'
