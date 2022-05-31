@@ -1,128 +1,69 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { Card } from "antd";
 import { layDSViTriAction } from "../../../redux/action/layDanhSachViTriAction";
 import { NavLink } from "react-router-dom";
 import InputSearch from "../Header/InputSearch";
 import { BsFillArrowRightCircleFill } from "react-icons/bs/index";
+import { AiOutlineArrowRight } from "react-icons/ai/index";
 import ANIMATION from "../../../assets/animation1.gif";
 import BG from "../../../assets/bg1.gif";
 import TypeWriterEffect from "react-typewriter-effect";
 import { useHistory } from "react-router-dom";
-const { Meta } = Card;
 export default function HomeDetail() {
   const history = useHistory();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(layDSViTriAction());
   }, []);
-  useEffect(() => {
-    const typeWriter = () => {
-      return (
-        <TypeWriterEffect
-          textStyle={{
-            fontFamily: "Red Hat Display",
-            color: "#E60965",
-            fontWeight: 500,
-            fontSize: "1.5em",
-          }}
-          startDelay={500}
-          cursorColor="#E60965"
-          multiText={["Cities", "Hotels", "Places"]}
-          multiTextDelay={500}
-          typeSpeed={30}
-        />
-      );
-    };
-  });
   const { dsViTri } = useSelector((state) => {
     return state.layDSViTriReducer;
   });
-  console.log(dsViTri);
-  var settings = {
-    dots: false,
-    infinite: false,
-    speed: 100,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    initialSlide: 0,
-    autoplay: true,
-    autoplaySpeed: 8000,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          dots: false,
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          dots: false,
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          dots: false,
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          dots: false,
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
-
   const renderLocation = () => {
-    return dsViTri?.map((vitri, index) => {
+    return dsViTri?.slice(1, 10).map((vitri, index) => {
       return (
-        <div key={index} className="space-x-1 rounded-md my-10">
-          <NavLink to={"/room"}>
-            <Card
-              key={index}
-              hoverable
-              style={{ width: "90%", borderRadius: "10px", height: "324px" }}
-              cover={
-                <img
-                  alt="example"
-                  src={
-                    vitri.image ? vitri.image : "https://picsum.photos/252/206"
-                  }
-                  style={{
-                    width: "100%",
-                    height: "206px",
-                    objectFit: "cover",
-                    objectPosition: "center",
-                  }}
-                />
-              }
+        <div
+          key={index}
+          className="space-x-2 my-10 rounded-3xl overflow-hidden text-white text-xl font-bold lg:text-white lg:text-3xl lg:font-bold md:text-white md:text-3xl md:font-bold "
+        >
+          <div>
+            <div
+              style={{
+                width: "100%",
+                borderRadius: "10px",
+                height: "100%",
+                position: "relative",
+              }}
             >
-              <Meta
-                className="text-white"
-                title={vitri.province}
-                description={vitri.name}
+              <img
+                alt="example"
+                src={
+                  vitri.image ? vitri.image : "https://picsum.photos/252/206"
+                }
+                className={"hover:shadow-2xl"}
+                style={{
+                  width: "100%",
+                  height: "206px",
+                  objectFit: "cover",
+                  objectPosition: "center",
+                }}
               />
-            </Card>
-          </NavLink>
+              <div className="absolute top-4 left-1/2 transform -translate-x-1/2">
+                <p className="text-center">{vitri.province}</p>
+                <p>{vitri.name}</p>
+
+                <button
+                  onClick={() => {
+                    history.push("/room");
+                  }}
+                  className="my-0 mx-auto space-x-2 flex justify-center items-center rounded-3xl lg:px-3 lg:py-2 md:px-3 md:py-2 px-2 py-1 text-sm lg:text-base md:text-base border-2 border-solid border-primary hover:bg-primary transition-all duration-500 ease-in-out hover:text-white font-medium"
+                >
+                  <span>Explore</span>
+                  <AiOutlineArrowRight />
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       );
     });
@@ -163,13 +104,13 @@ export default function HomeDetail() {
               <p className="lg:pt-3 md:pt-3 pt-1 font-medium lg:text-lg md:text-lg text-base text-gray-400">
                 Đi bất cứ đâu, bất cứ lúc nào
               </p>
-              <div className="flex justify-between items-center rounded-3xl px-2 shadow-lg text-pink-600">
-                <p
-                  onClick={() => {
-                    history.push("/room");
-                  }}
-                  className="text-primary mb-0.5 font-medium text-xl "
-                >
+              <div
+                onClick={() => {
+                  history.push("/room");
+                }}
+                className="flex justify-between items-center rounded-3xl px-2 shadow-lg text-pink-600"
+              >
+                <p className="text-primary mb-0.5 font-medium text-xl ">
                   Tôi linh hoạt
                 </p>
                 <BsFillArrowRightCircleFill className="text-primary font-medium text-2xl pb-1" />
@@ -185,12 +126,12 @@ export default function HomeDetail() {
         </div>
       </div>
       <div className="container my-5 mx-auto py-5 lg:z-0 md:z-0 sm:z-0">
-        <Slider {...settings}>{renderLocation()}</Slider>
+        {renderLocation()}
       </div>
 
       <div className="relative my-5">
         <img src={BG} className="object-cover object-center mx-auto w-full" />
-        <div className="absolute text-2xl left-1/2 transform top-10 -translate-x-1/2 md:text-6xl lg:text-6xl font-medium text-white">
+        <div className="absolute text-lg left-1/2 transform top-10 -translate-x-1/2 md:text-6xl lg:text-6xl font-medium text-white">
           <div className="flex items-center space-x-3">
             <span>Find Nearby</span>
             <TypeWriterEffect
@@ -208,7 +149,7 @@ export default function HomeDetail() {
             />
           </div>
 
-          <div className="text-gray-300 text-2xl">
+          <div className="text-gray-300 lg:text-2xl md:text-2xl text-lg">
             Explore top-rated attractions, activities and more!
           </div>
           <button
@@ -216,7 +157,7 @@ export default function HomeDetail() {
               history.push("/room");
             }}
             className={
-              "p-3 rounded-full font-semibold text-2xl border-white border-solid border-1 text-white hover:bg-primary hover:text-white hover:border-transparent transition-all duration-500 ease-in-out "
+              "lg:p-3 md:p-3 p-2 rounded-full ;g:font-bold lg:text-lg md:font-bold md:text-lg font-medium text-base  border-white border-solid border-1 text-white hover:bg-primary hover:text-white hover:border-transparent transition-all duration-500 ease-in-out "
             }
           >
             Let's Explore

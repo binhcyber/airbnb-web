@@ -64,93 +64,99 @@ export default function Register() {
       }}
     >
       {({ errors, touched }) => (
-        <div class="w-full md:w-1/2 lg:w-1/3 mx-auto my-12">
-          <h1 class="text-lg font-bold">Register</h1>
+        <div class="w-full md:w-1/2 lg:w-1/3 mx-auto my-12 border-solid border-2 border-primary rounded-3xl shadow-2xl p-4">
+          <h1 class="text-lg font-bold text-primary">Register</h1>
           <Form class="flex flex-col mt-4">
             <Field
               type="text"
               name="name"
-              class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
+              class="px-4 py-3 mt-4 w-full rounded-md border-transparent bg-gray-100 focus:border-pink-500 text-sm "
               placeholder="Họ tên"
             />
-            {errors.name && touched.name ? <div>{errors.name}</div> : null}
+            {errors.name && touched.name ? (
+              <div className="text-primary">{errors.name}</div>
+            ) : null}
             <Field
               type="email"
               name="email"
-              class="px-4 py-3 mt-4 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
+              class="px-4 py-3 mt-4 w-full rounded-md border-transparent bg-gray-100 focus:border-pink-500 text-sm"
               placeholder="Email"
             />
-            {errors.email && touched.email ? <div>{errors.email}</div> : null}
+            {errors.email && touched.email ? (
+              <div className="text-primary">{errors.email}</div>
+            ) : null}
             <Field
               type="text"
               name="phone"
-              class="px-4 py-3 mt-4 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
+              class="px-4 py-3 mt-4 w-full rounded-md border-transparent bg-gray-100 focus:border-pink-500 text-sm"
               placeholder="Số điện thoại"
             />
-            {errors.phone && touched.phone ? <div>{errors.phone}</div> : null}
+            {errors.phone && touched.phone ? (
+              <div className="text-primary">{errors.phone}</div>
+            ) : null}
             <Field
               type="password"
               name="password"
-              class="px-4 py-3 mt-4 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
+              class="px-4 py-3 mt-4 w-full rounded-md border-transparent bg-gray-100 focus:border-pink-500 text-sm"
               placeholder="Mật khẩu"
             />
             {errors.password && touched.password ? (
-              <div>{errors.password}</div>
+              <div className="text-primary">{errors.password}</div>
             ) : null}
             <div className="flex flex-row ">
               <div className="flex flex-col">
                 <Field
                   type="text"
                   name="birthday"
-                  class="px-4 py-3 mt-4 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
+                  class="px-4 py-3 mt-4 w-full rounded-md border-transparent bg-gray-100 focus:border-pink-500 text-sm"
                   placeholder="Ngày sinh"
                 />
                 {errors.birthday && touched.birthday ? (
-                  <div>{errors.birthday}</div>
+                  <div className="text-primary">{errors.birthday}</div>
                 ) : null}
               </div>
               <div className="flex flex-col mx-3">
                 <Field
                   type="text"
                   name="birthmonth"
-                  class="px-4 py-3 mt-4 w-full  rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
+                  class="px-4 py-3 mt-4 w-full rounded-md border-transparent bg-gray-100 focus:border-pink-500 text-sm"
                   placeholder="Tháng sinh"
                 />
                 {errors.birthmonth && touched.birthmonth ? (
-                  <div>{errors.birthmonth}</div>
+                  <div className="text-primary">{errors.birthmonth}</div>
                 ) : null}
               </div>
               <div className="flex flex-col">
                 <Field
                   type="text"
                   name="birthyear"
-                  class="px-4 py-3 mt-4 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
+                  class="px-4 py-3 mt-4 w-full rounded-md border-transparent bg-gray-100 focus:border-pink-500 text-sm"
                   placeholder="năm sinh"
                 />
                 {errors.birthyear && touched.birthyear ? (
-                  <div>{errors.birthyear}</div>
+                  <div className="text-primary">{errors.birthyear}</div>
                 ) : null}
               </div>
             </div>
             <Field
               type="text"
               name="address"
-              class="px-4 py-3 mt-4 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
+              class="px-4 py-3 mt-4 w-full rounded-md border-transparent bg-gray-100 focus:border-pink-500 text-sm"
               placeholder="Địa chỉ"
             />
             {errors.address && touched.address ? (
-              <div>{errors.address}</div>
+              <div className="text-primary">{errors.address}</div>
             ) : null}
             <button
               type="submit"
-              class="mt-4 px-4 py-3  leading-6 text-base rounded-md border border-transparent text-white focus:outline-none bg-blue-500 text-blue-100 hover:text-white focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer inline-flex items-center w-full justify-center items-center font-medium focus:outline-none"
+              class="mt-4 px-4 py-3 transition-all duration-500 ease-in-out text-base rounded-md text-white  bg-pink-500 hover:bg-red-300 hover:text-white cursor-pointer inline-flex items-center w-full justify-center font-medium "
             >
               Register
             </button>
             <div class="flex flex-col items-center mt-5">
               <p class="mt-1 text-xs font-light text-gray-500">
                 Register already?
-                <NavLink to="/login" class="ml-1 font-medium text-blue-400">
+                <NavLink to="/login" class="ml-1 font-medium text-primary">
                   Login now
                 </NavLink>
               </p>

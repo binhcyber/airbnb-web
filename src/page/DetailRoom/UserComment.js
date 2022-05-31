@@ -192,7 +192,7 @@ export default function UserComment({ id }) {
                 ) : (
                   <button
                     onClick={handleSubmit}
-                    className="bg-blue-400 text-white p-2 rounded-md cursor-pointer"
+                    className="bg-pink-500 text-white p-2 rounded-md cursor-pointer"
                     defaultValue="Post Comment"
                   >
                     submit

@@ -14,7 +14,7 @@ export default function Login() {
   });
   return (
     <Formik
-      class="container mx-auto p-4 bg-white"
+      class="container mx-auto bg-white"
       initialValues={{
         email: "",
         password: "",
@@ -25,44 +25,46 @@ export default function Login() {
       }}
     >
       {({ errors, touched }) => (
-        <div class="w-full md:w-1/2 lg:w-1/3 mx-auto my-12">
-          <h1 class="text-lg font-bold">Login</h1>
+        <div class="w-full md:w-1/2 lg:w-1/3 mx-auto my-12 border-solid border-2 rounded-3xl border-primary shadow-2xl mt-24 mx-7 p-6 ">
+          <h1 class="text-lg text-primary font-bold">Login</h1>
           <Form class="flex flex-col mt-4">
             <Field
               type="email"
               name="email"
-              class="px-4 py-3 mt-4 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
+              class="px-4 py-3 mt-4 w-full rounded-md bg-gray-100 border-transparent focus:border-pink-500 text-sm"
               placeholder="Email"
             />
-            {errors.email && touched.email ? <div>{errors.email}</div> : null}
+            {errors.email && touched.email ? (
+              <div className="text-primary">{errors.email}</div>
+            ) : null}
             {errors.taiKhoan && touched.taiKhoan ? (
-              <div>{errors.taiKhoan}</div>
+              <div className="text-primary">{errors.taiKhoan}</div>
             ) : null}
             <Field
               type="password"
               name="password"
-              class="px-4 py-3 mt-4 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
+              class="px-4 py-3 mt-4 w-full rounded-md bg-gray-100 border-transparent focus:border-pink-500 text-sm"
               placeholder="Mật khẩu"
             />
             {errors.password && touched.password ? (
-              <div>{errors.password}</div>
+              <div className="text-primary">{errors.password}</div>
             ) : null}
             <button
               type="submit"
-              class="mt-4 px-4 py-3  leading-6 text-base rounded-md border border-transparent text-white focus:outline-none bg-blue-500 text-blue-100 hover:text-white focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer inline-flex items-center w-full justify-center items-center font-medium focus:outline-none"
+              class="mt-4 px-4 py-3 text-base rounded-md border border-transparent text-white focus:outline-none bg-pink-500 text-blue-100 hover:bg-red-300 cursor-pointer inline-flex  w-full justify-center items-center font-medium "
             >
               Login
             </button>
             <div class="flex flex-col items-center mt-5">
               <p class="mt-1 text-xs font-light text-gray-500">
                 Are you register?
-                <NavLink to="/register" class="ml-1 font-medium text-blue-400">
+                <NavLink to="/register" class="ml-1 font-medium text-primary">
                   Register now
                 </NavLink>
               </p>
               <p class="mt-1 text-xs font-light text-gray-500">
                 Are you come back Home Page?
-                <NavLink to="/" class="ml-1 font-medium text-blue-400">
+                <NavLink to="/" class="ml-1 font-medium text-primary">
                   Yes
                 </NavLink>
               </p>

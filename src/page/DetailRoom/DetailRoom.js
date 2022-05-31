@@ -80,143 +80,156 @@ export default function DetailRoom() {
   };
   return (
     <div className="lg:container md:container lg:mx-auto md:mx-auto lg:mt-24 md:mt-24 mt-24 ml-5">
-      <div className="flex flex-row items-center justify-center ">
+      <div className="flex flex-row items-center justify-center rounded-lg shadow-xl space-x-6 py-6 hover:bg-primary hover:text-white">
         <div className="flex flex-col justify-center items-center">
-          <h1>{chiTietPhong?.name}</h1>
           <img
             src={
               chiTietPhong?.image
                 ? chiTietPhong?.image
                 : "http://picsum.photos/200"
             }
+            className={"rounded-lg shadow-xl"}
           />
           <hr />
-          <p className="mt-3">
-            Phòng ngủ:
-            {chiTietPhong?.bedroom ? chiTietPhong.bedroom : "Đang cập nhật"} -
-            Phòng khách:
-            {chiTietPhong?.guests ? chiTietPhong.guests : "Đang cập nhật"} - Nhà
-            vệ sinh: {chiTietPhong?.bath ? chiTietPhong.bath : "Đang cập nhật"}
-          </p>
         </div>
-        <div className="p-4">
-          <h3>
+        <div className="p-4 rounded-lg shadow-xl">
+          <p className="font-semibold">{chiTietPhong?.name}</p>
+          <p className="text-sm font-normal">
             {chiTietPhong?.description.length >= 50
               ? chiTietPhong?.description.slice(0, 50) + "..."
               : chiTietPhong?.description}
-          </h3>
+          </p>
+          <p className="mt-3">
+            Phòng ngủ:
+            {chiTietPhong?.bedroom ? chiTietPhong.bedroom : " Đang cập nhật"} -
+            Phòng khách:
+            {chiTietPhong?.guests ? chiTietPhong.guests : " Đang cập nhật"} -
+            Nhà vệ sinh:
+            {chiTietPhong?.bath ? chiTietPhong.bath : " Đang cập nhật"}
+          </p>
+          <p className="text-sm mt-2 space-x-5">
+            <span className="font-bold text-sm">VND </span>
+            {priceRoomday?.toLocaleString()}/night
+          </p>
           <>
-            <Button onClick={showModal}>Hiển thị chi tiết</Button>
+            <Button
+              style={{
+                borderRadius: "10px",
+                textAlign: "right",
+                color: "#ec4899",
+              }}
+              onClick={showModal}
+            >
+              Detail
+            </Button>
             <Modal
               title="Thông tin chi tiết"
               visible={isModalVisible}
               onOk={handleOk}
               onCancel={handleCancel}
             >
-              <h1 className="text-2xl font-bold">Giới thiệu về nơi này</h1>
-              <p>{chiTietPhong?.description}</p>
+              <h1 className="text-xl  font-bold">Giới thiệu về nơi này</h1>
+              <p className="text-gray-500">{chiTietPhong?.description}</p>
               <h3 className="text-xl font-bold">Chổ ở:</h3>
-              <p>sạch sẽ, rộng rãi, gần bờ hồ</p>
+              <p className="text-gray-500">sạch sẽ, rộng rãi, gần bờ hồ</p>
               <h3 className="text-xl font-bold">
                 Tiện nghi khách có quyền sử dụng:
               </h3>
-              <p>Tất cả</p>
+              <p className="text-gray-500">Tất cả</p>
               <h3 className="text-xl font-bold">Giá Phòng</h3>
               <div className="flex flex-row justify-between items-center">
-                <p className="text-lg text-red-500">
-                  {priceRoomday?.toLocaleString()} VND
+                <p className="text-lg ">
+                  <span className="font-bold">VND </span>
+                  {priceRoomday?.toLocaleString()}
                 </p>
-                <p className="text-lg">/day</p>
+                <p className="text-lg font-bold">/day</p>
               </div>
             </Modal>
           </>
-          <h1 className="text-xl text-green-500 mt-3">
-            Price: {priceRoomday?.toLocaleString()} VND/day
-          </h1>
         </div>
       </div>
-      <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1">
+      <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 mt-12">
         <div>
           <h1 className="text-2xl">Nơi này có những gì cho bạn</h1>
           <div className="grid grid-cols-2">
             <div className=" justify-start items-center flex flex-row space-x-2 space-x-2">
-              <WifiOutlined className="text-2xl" />
+              <WifiOutlined className="text-2xl text-primary" />
               {chiTietPhong?.wifi ? (
-                <p className="m-0 text-xl">Wifi</p>
+                <p className="utility">Wifi</p>
               ) : (
-                <del className="m-0 text-xl">Wifi</del>
+                <del className="utility_del">Wifi</del>
               )}
             </div>
             <div className="justify-start items-center flex flex-row space-x-2">
-              <MdFireplace className="text-2xl" />
+              <MdFireplace className="text-2xl text-primary" />
               {chiTietPhong?.indoorFireplace ? (
-                <p className="m-0 text-xl">IndoorFirePlace</p>
+                <p className="utility">IndoorFirePlace</p>
               ) : (
-                <del className="m-0 text-xl">IndoorFirePlace</del>
+                <del className="utility">IndoorFirePlace</del>
               )}
             </div>
             <div className="justify-start items-center flex flex-row space-x-2">
-              <MdElevator className="text-2xl" />
+              <MdElevator className="text-2xl text-primary" />
               {chiTietPhong?.elevator ? (
-                <p className="m-0 text-xl">Thang Máy</p>
+                <p className="utility">Thang Máy</p>
               ) : (
-                <del className="m-0 text-xl">Thang Máy</del>
+                <del className="utility">Thang Máy</del>
               )}
             </div>
             <div className="justify-start items-center flex flex-row space-x-2">
-              <FaHotTub className="text-2xl" />
+              <FaHotTub className="text-2xl text-primary" />
               {chiTietPhong?.hotTub ? (
-                <p className="m-0 text-xl">Hot Tub</p>
+                <p className="utility">Hot Tub</p>
               ) : (
-                <del className="m-0 text-xl">Hot Tub</del>
+                <del className="utility">Hot Tub</del>
               )}
             </div>
             <div className="justify-start items-center flex flex-row space-x-2">
-              <MdPool className="text-2xl" />
+              <MdPool className="text-2xl text-primary" />
               {chiTietPhong?.pool ? (
-                <p className="m-0 text-xl">Pool</p>
+                <p className="utility">Pool</p>
               ) : (
-                <del className="m-0 text-xl">Pool</del>
+                <del className="utility">Pool</del>
               )}
             </div>
             <div className="justify-start items-center flex flex-row space-x-2">
-              <FaHandsWash className="text-2xl" />
+              <FaHandsWash className="text-2xl text-primary" />
               {chiTietPhong?.dryer ? (
-                <p className="m-0 text-xl">Dryer</p>
+                <p className="utility">Dryer</p>
               ) : (
-                <del className="m-0 text-xl">Dryer</del>
+                <del className="utility">Dryer</del>
               )}
             </div>
             <div className="justify-start items-center flex flex-row space-x-2">
-              <CgGym className="text-2xl" />
+              <CgGym className="text-2xl text-primary" />
               {chiTietPhong?.gym ? (
-                <p className="m-0 text-xl">Gym</p>
+                <p className="utility">Gym</p>
               ) : (
-                <del className="m-0 text-xl">Gym</del>
+                <del className="utility">Gym</del>
               )}
             </div>
             <div className="justify-start items-center flex flex-row space-x-2">
-              <MdKitchen className="text-2xl" />
+              <MdKitchen className="text-2xl text-primary" />
               {chiTietPhong?.kitchen ? (
-                <p className="m-0 text-xl">Kitchen</p>
+                <p className="utility">Kitchen</p>
               ) : (
-                <del className="m-0 text-xl">Kitchen</del>
+                <del className="utility">Kitchen</del>
               )}
             </div>
             <div className="justify-start items-center flex flex-row space-x-2">
-              <GiFire className="text-2xl" />
+              <GiFire className="text-2xl text-primary" />
               {chiTietPhong?.heating ? (
-                <p className="m-0 text-xl">Heading</p>
+                <p className="utility">Heading</p>
               ) : (
-                <del className="m-0 text-xl">Heading</del>
+                <del className="utility">Heading</del>
               )}
             </div>
             <div className="items-center flex flex-row justify-start space-x-2">
-              <MdCable className="text-2xl" />
+              <MdCable className="text-2xl text-primary" />
               {chiTietPhong?.cableTV ? (
-                <p className="m-0 text-xl">CableTV</p>
+                <p className="utility">CableTV</p>
               ) : (
-                <del className="m-0 text-xl">CableTV</del>
+                <del className="utility">CableTV</del>
               )}
             </div>
           </div>
@@ -234,8 +247,12 @@ export default function DetailRoom() {
               </div>
             </div>
             <div>
-              <div className="flex flex-row items-center">
-                <Space direction="vertical" size={12}>
+              <div className="flex flex-row items-center space-x-3">
+                <Space
+                  style={{ borderRadius: "20px" }}
+                  direction="vertical"
+                  size={12}
+                >
                   <DatePicker
                     onChange={handleCheckIn}
                     placeholder={"Check in"}
@@ -264,14 +281,14 @@ export default function DetailRoom() {
               {allowCheckIn && allowCheckOut ? (
                 <div
                   onClick={datPhong}
-                  className="focus:outline-none cursor-pointer  text-center text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-4 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 w-full"
+                  className="focus:outline-none cursor-pointer  text-center text-white bg-pink-500 hover:bg-red-300 font-medium rounded-lg text-sm px-5 py-4 mr-2 mb-2  w-full"
                 >
                   <button className="font-bold text-lg" type="button">
                     Đặt Phòng
                   </button>
                 </div>
               ) : (
-                <div className="focus:outline-none bg-gray-500 opacity-75 text-center text-white cursor-not-allowed hover:bg-gray-400 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-4 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 w-full">
+                <div className="focus:outline-none bg-gray-500 opacity-75 text-center text-white cursor-not-allowed hover:bg-gray-400  font-medium rounded-lg text-sm px-5 py-4 mr-2 mb-2 w-full">
                   <button
                     disabled
                     className="font-bold text-lg cursor-not-allowed"
@@ -306,33 +323,63 @@ export default function DetailRoom() {
       </div>
       <div className="mt-10">
         <div className="flex flex-row justify-start items-center">
-          <StarOutlined className="text-red-500 text-lg mb-1 mr-1" />
+          <StarOutlined className="text-lg mb-1 mr-1" />
           <span className=" text-lg font-bold">5 - đánh giá</span>
         </div>
         <div className="grid grid-cols-2 gap-6 ">
           <div className="justify-start items-center flex flex-row space-x-2 mr-10 ">
             <div className="m-0 flex-shrink-0 w-1/2">Mức độ sách sẽ</div>
-            <Progress percent={80} size="small" className="flex-grow" />
+            <Progress
+              strokeColor={"#ec4899"}
+              percent={80}
+              size="small"
+              className="flex-grow"
+            />
           </div>
           <div className="justify-start items-center flex flex-row space-x-2 mr-10">
             <div className="m-0 flex-shrink-0 w-1/2">Độ chính xác</div>
-            <Progress percent={80} size="small" className="flex-grow" />
+            <Progress
+              strokeColor={"#ec4899"}
+              percent={80}
+              size="small"
+              className="flex-grow"
+            />
           </div>
           <div className="justify-start items-center flex flex-row space-x-2 mr-10">
             <div className="m-0 flex-shrink-0 w-1/2">Liên lạc</div>
-            <Progress percent={80} size="small" className="flex-grow" />
+            <Progress
+              strokeColor={"#ec4899"}
+              percent={80}
+              size="small"
+              className="flex-grow"
+            />
           </div>
           <div className="justify-start items-center flex flex-row space-x-2 mr-10">
             <div className="m-0 flex-shrink-0 w-1/2">Vị Trí</div>
-            <Progress percent={80} size="small" className="flex-grow" />
+            <Progress
+              strokeColor={"#ec4899"}
+              percent={80}
+              size="small"
+              className="flex-grow"
+            />
           </div>
           <div className="justify-start items-center flex flex-row space-x-2 mr-10">
             <div className="m-0 flex-shrink-0 w-1/2">Nhận phòng</div>
-            <Progress percent={80} size="small" className="flex-grow" />
+            <Progress
+              strokeColor={"#ec4899"}
+              percent={80}
+              size="small"
+              className="flex-grow"
+            />
           </div>
           <div className="justify-start items-center flex flex-row space-x-2 mr-10">
             <div className="m-0 flex-shrink-0 w-1/2">Giá trị</div>
-            <Progress percent={80} size="small" className="flex-grow" />
+            <Progress
+              strokeColor={"#ec4899"}
+              percent={80}
+              size="small"
+              className="flex-grow"
+            />
           </div>
         </div>
       </div>

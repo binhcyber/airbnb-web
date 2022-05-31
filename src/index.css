@@ -124,6 +124,52 @@ top: 25px;
 left: 0px;
 transition: all 0.5s ease-in-out;
   }
+  /* Modal-DetailRoom */
+  .ant-modal-content{
+    border-radius: 20px!important;
+    overflow: hidden;
+  }
+  .ant-btn-primary {
+    border-radius: 10px!important;
+    background-color: #ec4899!important;
+    border-color: #ec4899!important;
+    transition: all 0.5s ease-in-out !important;
+  }
+  
+  .ant-btn-primary:hover{
+    border: none !important;
+    background-color: #ec4899!important;
+    opacity: 500;
+  }
+  .ant-btn {
+    border: 1px solid #ec4899!important;
+    border-radius: 20px !important;
+  }
+  .ant-btn:hover{
+    color: #ec4899!important
+  }
+  .ant-picker{
+    border-radius: 20px!important;
+  }
+  .ant-picker:hover{
+    border: 1px solid #ec4899 !important
+  }
+  .ant-picker-focused{
+    border-color: #ec4899 !important;
+    box-shadow: 0 0 0 2px rgb(236 72 153 / 20%)!important;
+  }
+  .ant-picker-suffix{
+    color: #ec4899!important;
+  }
+  .ant-picker-cell-in-view.ant-picker-cell-today .ant-picker-cell-inner::before{
+    border:1px solid #ec4899 !important;
+  }
+  .ant-picker-input > input{
+    color: #ec4899 !important;
+  }
+  .ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner{
+    background-color: #ec4899 !important;
+  }
   /* Css slick (home detail component) */
   .slick-dots{
       display: none!important;
@@ -134,8 +180,7 @@ transition: all 0.5s ease-in-out;
   .slick-dots li.slick-active button:before{
       color: orange!important;
   }
-  
-  #components-layout-demo-custom-trigger .trigger {
+    #components-layout-demo-custom-trigger .trigger {
       font-size: 18px;
       line-height: 64px;
       padding: 0 24px;
@@ -221,13 +266,10 @@ transition: all 0.5s ease-in-out;
     @media (min-width: 641px ) and (max-width:1023px) {
       .list_location{
         width: 300px;
-        height: 200px;
-     
+        height: 200px;   
       }
     }
     @media (min-width: 1024px){
-     
-
     }
 
 
@@ -238,7 +280,12 @@ transition: all 0.5s ease-in-out;
 @layer base{
 }
 @layer components{
- 
+  .utility{
+    @apply m-0 font-medium text-gray-500
+  }
+  .utility_del{
+    @apply  m-0 font-medium text-gray-500
+  }
 }
 body > iframe {
   pointer-events: none;
