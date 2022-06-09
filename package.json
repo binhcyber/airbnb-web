@@ -24,12 +24,12 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-slick": "^0.28.1",
-    "react-typewriter-effect": "^1.1.0",
     "redux": "^4.1.1",
     "redux-thunk": "^2.4.1",
     "slick-carousel": "^1.8.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.4",
     "tslib": "^2.3.0",
+    "typewriter-effect": "^2.18.2",
     "web-vitals": "^1.0.1",
     "yup": "^0.32.11"
   },

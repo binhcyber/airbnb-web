@@ -107,7 +107,7 @@ border-radius: 20px;
     position: relative;
   }
   .footer_air:hover a{
-    color:#E60965
+    color:#e60965
   }
   .footer_air:hover::after{
     width: 100%;

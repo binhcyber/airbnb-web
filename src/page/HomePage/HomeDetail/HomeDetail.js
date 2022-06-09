@@ -8,7 +8,7 @@ import { BsFillArrowRightCircleFill } from "react-icons/bs/index";
 import { AiOutlineArrowRight } from "react-icons/ai/index";
 import ANIMATION from "../../../assets/animation1.gif";
 import BG from "../../../assets/bg1.gif";
-import TypeWriterEffect from "react-typewriter-effect";
+import TypewriterComponent from "typewriter-effect";
 import { useHistory } from "react-router-dom";
 export default function HomeDetail() {
   const history = useHistory();
@@ -96,11 +96,22 @@ export default function HomeDetail() {
           src="https://projectairbnb.vercel.app/static/media/heroImgOne.d825d7d1a6d9c90b5df1.jpg"
           className=" object-cover object-center mx-auto"
         />
+        <div className="lg:block md:block hidden absolute top-1/4 left-1/2 transform -translate-x-1/2 text-white font-bold text-2xl">
+          <TypewriterComponent
+            onInit={(typewrite) => {
+              typewrite
+                .typeString("Welcome to my Airbnb project")
+                .pauseFor(2000)
+                .deleteAll()
+                .start();
+            }}
+          />
+        </div>
         <div id="searchInput">
           <InputSearch dsViTri={dsViTri} />
           <button className="location group relative bg-white p-0 w-80 transition-all duration-500 ease-in-out">
             <p className=" m-0 text-gray-400 text-lg">Where do you want go?</p>
-            <div className="downshow_location lg:group-hover:block md:group-focus:block group-focus:block hidden">
+            <div className="downshow_location hidden lg:group-hover:block md:group-focus:block group-focus:block">
               <p className="lg:pt-3 md:pt-3 pt-1 font-medium lg:text-lg md:text-lg text-base text-gray-400">
                 Đi bất cứ đâu, bất cứ lúc nào
               </p>
@@ -116,7 +127,7 @@ export default function HomeDetail() {
                 <BsFillArrowRightCircleFill className="text-primary font-medium text-2xl pb-1" />
               </div>
             </div>
-            <div className="list_location group-focus:block hidden transition-all duration-500 ease-in-out">
+            <div className="list_location hidden group-focus:block transition-all duration-500 ease-in-out">
               <ul className="pt-3 space-y-3">{renderListSearch()}</ul>
             </div>
           </button>
@@ -134,21 +145,20 @@ export default function HomeDetail() {
         <div className="absolute text-lg left-1/2 transform top-10 -translate-x-1/2 md:text-6xl lg:text-6xl font-medium text-white">
           <div className="flex items-center space-x-3">
             <span>Find Nearby</span>
-            <TypeWriterEffect
-              textStyle={{
-                fontFamily: "Red Hat Display",
-                color: "#E60965",
-                fontWeight: 500,
-                fontSize: "1.5em",
+            <TypewriterComponent
+              onInit={(typewriter) => {
+                typewriter
+                  .typeString("Places")
+                  .pauseFor(2000)
+                  .deleteAll()
+                  .typeString("Hotels")
+                  .pauseFor(2000)
+                  .deleteAll()
+                  .typeString("Resorts")
+                  .start();
               }}
-              startDelay={500}
-              cursorColor="#E60965"
-              multiText={["Cities", "Hotels", "Places"]}
-              multiTextDelay={500}
-              typeSpeed={30}
             />
           </div>
-
           <div className="text-gray-300 lg:text-2xl md:text-2xl text-lg">
             Explore top-rated attractions, activities and more!
           </div>

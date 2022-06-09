@@ -47,8 +47,8 @@ module.exports = {
   },
   variants: {
     extend: {
-      display: ["group-focus"],
-      display: ["group-hover"],
+      display: ["group-hover", "group-focus"],
+      // display: ["group-focus"],
     },
   },
 };
