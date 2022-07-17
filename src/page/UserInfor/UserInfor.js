@@ -34,7 +34,6 @@ export default function UserInfor() {
   };
   const updateAvatar = () => {
     let formData = new FormData();
-
     formData.append("avatar", fileAvatar, fileAvatar.name);
     dispatch(capNhatNguoiDungAvatarAction(formData));
   };
