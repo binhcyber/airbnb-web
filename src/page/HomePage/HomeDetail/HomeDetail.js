@@ -10,6 +10,7 @@ import ANIMATION from "../../../assets/animation1.gif";
 import BG from "../../../assets/bg1.gif";
 import TypewriterComponent from "typewriter-effect";
 import { useHistory } from "react-router-dom";
+import BACKGROUND from "../../../assets/camping.webp";
 export default function HomeDetail() {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -92,10 +93,7 @@ export default function HomeDetail() {
   return (
     <div>
       <div className="relative ">
-        <img
-          src="https://projectairbnb.vercel.app/static/media/heroImgOne.d825d7d1a6d9c90b5df1.jpg"
-          className=" object-cover object-center mx-auto"
-        />
+        <img src={BACKGROUND} className=" object-cover object-center mx-auto" />
         <div className="lg:block md:block hidden absolute top-1/4 left-1/2 transform -translate-x-1/2 text-white font-bold text-2xl">
           <TypewriterComponent
             onInit={(typewrite) => {
